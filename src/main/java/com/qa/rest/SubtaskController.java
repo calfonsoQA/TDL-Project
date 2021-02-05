@@ -52,7 +52,7 @@ public class SubtaskController {
 		return ResponseEntity.ok(this.service.readOne(id));
 	}
 
-	@PutMapping("update/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<SubtaskDTO> update(@PathVariable("id") Long id, @RequestBody SubtaskDomain subtask) {
 		return new ResponseEntity<SubtaskDTO>(this.service.update(id, subtask), HttpStatus.ACCEPTED);
 	}
