@@ -52,8 +52,8 @@ public class SubtaskControllerIntegrationTest {
 
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.request(HttpMethod.POST, "http://localhost:8080/subtask/create/").contentType(MediaType.APPLICATION_JSON)
-				.content(jsonifier.writeValueAsString(contentBody));
+				.request(HttpMethod.POST, "http://localhost:8080/subtask/create/")
+				.contentType(MediaType.APPLICATION_JSON).content(jsonifier.writeValueAsString(contentBody));
 
 //		Setup Expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isCreated();
@@ -67,9 +67,9 @@ public class SubtaskControllerIntegrationTest {
 	public void readAll() throws Exception {
 		List<SubtaskDTO> resultList = new ArrayList<SubtaskDTO>();
 		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
-		SubtaskDTO expectedResult2 = new SubtaskDTO(2L, "Buy utensils", 40, true);  
-		SubtaskDTO expectedResult3 = new SubtaskDTO(3L,"Buy utensils", 40, true); 
-		SubtaskDTO expectedResult4 = new SubtaskDTO(4L,"Buy utensils", 40, true);    
+		SubtaskDTO expectedResult2 = new SubtaskDTO(2L, "Buy utensils", 40, true);
+		SubtaskDTO expectedResult3 = new SubtaskDTO(3L, "Buy utensils", 40, true);
+		SubtaskDTO expectedResult4 = new SubtaskDTO(4L, "Buy utensils", 40, true);
 		SubtaskDTO expectedResult5 = new SubtaskDTO(5L, "Buy utensils", 40, true);
 		resultList.add(expectedResult);
 		resultList.add(expectedResult2);
@@ -107,20 +107,14 @@ public class SubtaskControllerIntegrationTest {
 	}
 
 	@Test
-	public void update() throws Exception{
+	public void update() throws Exception {
 		SubtaskDomain contentBody = new SubtaskDomain(1L, "Buy utensils", 40, true, null);
 		SubtaskDTO expectedResult = mapToDTO(contentBody);
-//		expectedResult.setId(6L);
-//		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
 
 //		Setup Request
-//		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.PUT,
-//				"http://localhost:8080/subtask/update/" + ID);
-		
-//		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.request(HttpMethod.PUT, "http://localhost:8080/subtask/update/" + ID).contentType(MediaType.APPLICATION_JSON)
-				.content(jsonifier.writeValueAsString(contentBody));
+				.request(HttpMethod.PUT, "http://localhost:8080/subtask/update/" + ID)
+				.contentType(MediaType.APPLICATION_JSON).content(jsonifier.writeValueAsString(contentBody));
 
 //		Setup Expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isAccepted();
@@ -132,14 +126,13 @@ public class SubtaskControllerIntegrationTest {
 
 	@Test
 	public void delete() throws Exception {
-		
+
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.DELETE,
-				"http://localhost:8080/subtask/delete/" +ID);
+				"http://localhost:8080/subtask/delete/" + ID);
 
 //		Setup Expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isNoContent();
-
 
 //		Perform
 		this.mock.perform(mockRequest).andExpect(matchStatus);
