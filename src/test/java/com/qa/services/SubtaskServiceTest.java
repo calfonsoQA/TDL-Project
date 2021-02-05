@@ -1,7 +1,7 @@
 package com.qa.services;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.assertj.core.api.Assertions;
@@ -53,27 +53,38 @@ public class SubtaskServiceTest {
 //		Mockito.verify(this.mockedMapper, Mockito.times(1)).map(testSubtask, SubtaskDTO.class);
 	}
 
-//	@Test
-//	public void readAll() {
-//		
-//		UserDomain testUser = new UserDomain(1L, "John", "Doe", 25, null);
-//		List<UserDomain> testList = new ArrayList<UserDomain>();
-//		testList.add(testUser);
-//		UserDTO testDTO = this.mockedMapper.map(testList, UserDTO.class);
-//		
-//		// RULES
-//		
-//		Mockito.when(this.mockedRepo.findAll().thenReturn(Optional.of(testList)));
-//
-//		// ACTIONS
-//		List<UserDTO> result = this.service.readAll();
-//
-//		// ASSERTIONS
-//		Assertions.assertThat(result).isEqualTo(testDTO);
-//		
-//		Mockito.verify(this.mockedRepo, Mockito.times(1)).findAll();
-//
-//	}
+	@Test
+	public void readAll() {
+		
+		SubtaskDomain testSubtask = new SubtaskDomain(1L,"Buy utensils", 30, true,null);
+		SubtaskDomain testSubtask2 = new SubtaskDomain(2L,"Buy broom", 30, true,null);
+		SubtaskDomain testSubtask3 = new SubtaskDomain(3L,"Buy another", 30, true,null);
+		List<SubtaskDomain> testList = new ArrayList<SubtaskDomain>();
+		testList.add(testSubtask);
+		testList.add(testSubtask2);
+		testList.add(testSubtask3);
+		SubtaskDTO testDTO= new SubtaskDTO(1L, "Buy utensils", 30, true);
+		List<SubtaskDTO> testDTOList = new ArrayList<SubtaskDTO>();
+		testDTOList.add(testDTO);
+		
+		// RULES
+		Mockito.when(this.mockedRepo.findAll()).thenReturn(testList);
+
+		int j = 0;
+		for (SubtaskDomain i: testList) {
+			Mockito.when(this.mockedMapper.map(i, SubtaskDTO.class)).thenReturn(testDTOList.get(j));
+			j++;
+		}
+		
+		// ACTIONS
+		List<SubtaskDTO> result = this.service.readAll();
+
+		// ASSERTIONS
+		Assertions.assertThat(result).isEqualTo(testDTOList);
+		
+		Mockito.verify(this.mockedRepo, Mockito.times(1)).findAll();
+
+	}
 
 	@Test
 	public void readOne() {
@@ -127,13 +138,6 @@ public class SubtaskServiceTest {
 
 	@Test
 	public void delete() {
-//		
-//		SubtaskDomain testUser = new SubtaskDomain(1L, "Buy utensils", 40, true, null);
-//		SubtaskDTO testDTO = this.mockedMapper.map(testUser, SubtaskDTO.class);
-//		
-//		// RULES
-////		Mockito.when(this.mockedRepo.deleteById(testUser.getId())).thenReturn(true);
-//		//Mockito.when(this.mockedRepo.deleteById(testUser.getId())).thenReturn(Optional.of(testUser));
 
 		// ACTIONS
 		Boolean result = this.service.delete(1L);
