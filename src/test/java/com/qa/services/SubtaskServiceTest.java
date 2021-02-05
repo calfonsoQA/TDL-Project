@@ -64,8 +64,12 @@ public class SubtaskServiceTest {
 		testList.add(testSubtask2);
 		testList.add(testSubtask3);
 		SubtaskDTO testDTO= new SubtaskDTO(1L, "Buy utensils", 30, true);
+		SubtaskDTO testDTO2= new SubtaskDTO(1L, "Buy broom", 30, true);
+		SubtaskDTO testDTO3= new SubtaskDTO(1L, "Buy another", 30, true);
 		List<SubtaskDTO> testDTOList = new ArrayList<SubtaskDTO>();
 		testDTOList.add(testDTO);
+		testDTOList.add(testDTO2);
+		testDTOList.add(testDTO3);
 		
 		// RULES
 		Mockito.when(this.mockedRepo.findAll()).thenReturn(testList);
