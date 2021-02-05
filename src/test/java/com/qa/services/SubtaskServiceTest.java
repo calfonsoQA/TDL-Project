@@ -49,8 +49,8 @@ public class SubtaskServiceTest {
 		Assertions.assertThat(result).usingRecursiveComparison().isEqualTo(testDTO);
 		Assertions.assertThat(result).isNotNull();
 		
-//		Mockito.verify(this.mockedRepo, Mockito.times(1)).save(Mockito.any(SubtaskDomain.class));
-//		Mockito.verify(this.mockedMapper, Mockito.times(1)).map(testSubtask, SubtaskDTO.class);
+		Mockito.verify(this.mockedRepo, Mockito.times(1)).save(Mockito.any(SubtaskDomain.class));
+		Mockito.verify(this.mockedMapper, Mockito.times(1)).map(testSubtask, SubtaskDTO.class);
 	}
 
 	@Test
