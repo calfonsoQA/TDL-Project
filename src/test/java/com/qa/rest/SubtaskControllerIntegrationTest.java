@@ -108,18 +108,18 @@ public class SubtaskControllerIntegrationTest {
 
 	@Test
 	public void update() throws Exception{
-//		UserDTO expectedResult = new UserDTO(1L, "Barry", "Smith", 40);
-//
-////		Setup Request
-//		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.PUT,
-//				"http://localhost:8080/user/update/" + ID);
-//
-////		Setup Expectations
-//		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
-//		ResultMatcher matchContent = MockMvcResultMatchers.content().json(jsonifier.writeValueAsString(expectedResult));
-//
-////		Perform
-//		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
+		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
+
+//		Setup Request
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.PUT,
+				"http://localhost:8080/subtask/update/" + ID);
+
+//		Setup Expectations
+		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
+		ResultMatcher matchContent = MockMvcResultMatchers.content().json(jsonifier.writeValueAsString(expectedResult));
+
+//		Perform
+		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
 	@Test
