@@ -63,9 +63,9 @@ public class SubtaskService {
         // removes the entity
         this.repo.deleteById(id);
         // checks to see if it still exists
-        boolean exists = this.repo.existsById(id);
+       
         // returns true if entity no longer exists
-        return !exists;
+        return !this.repo.existsById(id);
     }
 
 	
