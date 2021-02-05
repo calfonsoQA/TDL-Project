@@ -36,6 +36,12 @@ public class TaskDomain {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public TaskDomain(String taskName, List<SubtaskDomain> subtaskList) {
+		super();
+		this.taskName = taskName;
+		this.subtaskList = subtaskList;
+	}
 
 	public TaskDomain(long id, String taskName, List<SubtaskDomain> subtaskList) {
 		super();

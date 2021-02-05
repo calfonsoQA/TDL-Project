@@ -21,15 +21,16 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.persistence.domain.SubtaskDomain;
+import com.qa.persistence.domain.TaskDomain;
 import com.qa.persistence.dtos.SubtaskDTO;
+import com.qa.persistence.dtos.TaskDTO;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:schema-test.sql",
 		"classpath:data-test.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "test")
-public class SubtaskControllerIntegrationTest {
+public class TaskControllerIntegrationTest {
 
 	@Autowired
 	private MockMvc mock;
@@ -40,19 +41,19 @@ public class SubtaskControllerIntegrationTest {
 
 	private int ID = 1;
 
-	private SubtaskDTO mapToDTO(SubtaskDomain model) {
-		return this.mapper.map(model, SubtaskDTO.class);
+	private TaskDTO mapToDTO(TaskDomain model) {
+		return this.mapper.map(model, TaskDTO.class);
 	}
 
 	@Test
 	public void create() throws Exception {
-		SubtaskDomain contentBody = new SubtaskDomain("Buy utensils", 40, true, null);
-		SubtaskDTO expectedResult = mapToDTO(contentBody);
-		expectedResult.setId(6L);
+		TaskDomain contentBody = new TaskDomain("Task", null);
+		TaskDTO expectedResult = mapToDTO(contentBody);
+		expectedResult.setId(4L);
 
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.request(HttpMethod.POST, "http://localhost:8080/subtask/create/")
+				.request(HttpMethod.POST, "http://localhost:8080/task/create/")
 				.contentType(MediaType.APPLICATION_JSON).content(jsonifier.writeValueAsString(contentBody));
 
 //		Setup Expectations
@@ -65,21 +66,33 @@ public class SubtaskControllerIntegrationTest {
 
 	@Test
 	public void readAll() throws Exception {
-		List<SubtaskDTO> resultList = new ArrayList<SubtaskDTO>();
-		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
-		SubtaskDTO expectedResult2 = new SubtaskDTO(2L, "Buy vacuum", 40, true);
-		SubtaskDTO expectedResult3 = new SubtaskDTO(3L, "Clean the kitchen", 40, true);
-		SubtaskDTO expectedResult4 = new SubtaskDTO(4L, "Sign documents", 40, true);
-		SubtaskDTO expectedResult5 = new SubtaskDTO(5L, "Update calendar", 40, true);
+		
+		List<SubtaskDTO> subResultList = new ArrayList<SubtaskDTO>();
+		List<SubtaskDTO> subResultList2 = new ArrayList<SubtaskDTO>();
+		List<SubtaskDTO> subResultList3 = new ArrayList<SubtaskDTO>();
+		SubtaskDTO expectedSubResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
+		SubtaskDTO expectedSubResult2 = new SubtaskDTO(2L, "Buy vacuum", 40, true);
+		SubtaskDTO expectedSubResult3 = new SubtaskDTO(3L, "Clean the kitchen", 40, true);
+		SubtaskDTO expectedSubResult4 = new SubtaskDTO(4L, "Sign documents", 40, true);
+		SubtaskDTO expectedSubResult5 = new SubtaskDTO(5L, "Update calendar", 40, true);
+		subResultList.add(expectedSubResult);
+		subResultList2.add(expectedSubResult2);
+		subResultList2.add(expectedSubResult3);
+		subResultList3.add(expectedSubResult4);
+		subResultList3.add(expectedSubResult5);
+		
+		List<TaskDTO> resultList = new ArrayList<TaskDTO>();
+		TaskDTO expectedResult = new TaskDTO(1L,"Cooking", subResultList);
+		TaskDTO expectedResult2 = new TaskDTO(2L,"Cleaning", subResultList2);
+		TaskDTO expectedResult3 = new TaskDTO(3L,"Admin Work", subResultList3);
+	
 		resultList.add(expectedResult);
 		resultList.add(expectedResult2);
 		resultList.add(expectedResult3);
-		resultList.add(expectedResult4);
-		resultList.add(expectedResult5);
 
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET,
-				"http://localhost:8080/subtask/readAll/");
+				"http://localhost:8080/task/readAll/");
 
 //		Setup Expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
@@ -91,12 +104,16 @@ public class SubtaskControllerIntegrationTest {
 
 	@Test
 	public void readOne() throws Exception {
-
-		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
+//		TaskDomain contentBody = new TaskDomain(1L,"Cooking", null);
+//		TaskDTO expectedResult = mapToDTO(contentBody);
+		SubtaskDTO subtaskDTO = new SubtaskDTO(1L, "Buy utensils", 30, true);
+		List<SubtaskDTO> subtaskList = new ArrayList<SubtaskDTO>();
+		subtaskList.add(subtaskDTO);
+		TaskDTO expectedResult = new TaskDTO(1L,"Cooking", subtaskList);
 
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET,
-				"http://localhost:8080/subtask/read/" + ID);
+				"http://localhost:8080/task/read/" + ID);
 
 //		Setup Expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
@@ -108,12 +125,12 @@ public class SubtaskControllerIntegrationTest {
 
 	@Test
 	public void update() throws Exception {
-		SubtaskDomain contentBody = new SubtaskDomain(1L, "Buy utensils", 40, true, null);
-		SubtaskDTO expectedResult = mapToDTO(contentBody);
+		TaskDomain contentBody = new TaskDomain(1L,"Task", null);
+		TaskDTO expectedResult = mapToDTO(contentBody);
 
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.request(HttpMethod.PUT, "http://localhost:8080/subtask/update/" + ID)
+				.request(HttpMethod.PUT, "http://localhost:8080/task/update/" + ID)
 				.contentType(MediaType.APPLICATION_JSON).content(jsonifier.writeValueAsString(contentBody));
 
 //		Setup Expectations
@@ -129,7 +146,7 @@ public class SubtaskControllerIntegrationTest {
 
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.DELETE,
-				"http://localhost:8080/subtask/delete/" + ID);
+				"http://localhost:8080/task/delete/" + ID);
 
 //		Setup Expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isNoContent();
