@@ -85,6 +85,7 @@ public class SubtaskServiceTest {
 
 		// ASSERTIONS
 		Assertions.assertThat(result).isEqualTo(testDTOList);
+		Assertions.assertThat(result).isNotNull();
 		
 		Mockito.verify(this.mockedRepo, Mockito.times(1)).findAll();
 
