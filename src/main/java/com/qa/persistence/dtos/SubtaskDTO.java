@@ -41,7 +41,7 @@ public class SubtaskDTO {
 		this.subtaskDescription = subtaskDescription;
 	}
 
-	public int isEffortLevel() {
+	public int getEffortLevel() {
 		return effortLevel;
 	}
 

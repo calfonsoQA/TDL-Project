@@ -33,12 +33,26 @@
                             <a href="link/to/home" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="link/to/memes" class="nav-link">Memes</a>
+                            <a href="link/to/memes" class="nav-link">About</a>
                         </li>
                     </ul>
                 </div> -->
             </nav>
             <div class="row" id="firstRow">
+                <div class="col-md">
+                    <div class="alert alert-primary">
+                        <div id="subtaskCreate">
+                            <input type="text" class="form-control" id="taskDescription" placeholder="Task Description:" />
+                    <input type="text" class="form-control" id="eLevel" placeholder="Effort Level:" />
+                    </div>
+                    
+                        <button type="button" class="btn btn-success" onclick="createSubtask()" data-dismiss="modal">Create</button>
+                        <!-- <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button> -->
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="row" id="taskDisplayRow">
                 <div class="col-md">
                     <div class="alert alert-primary">
                         <div id="subtasks"></div>

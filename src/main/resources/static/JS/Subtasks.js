@@ -1,6 +1,8 @@
 'use strict';
 
-const subtasks = document.querySelector("#subtasks"); 
+const subtasks = document.querySelector("#subtasks");
+const subtaskDesc = document.querySelector("#subtaskDescription");
+const eLevel = document.querySelector("#eLevel");    
 
 const printNameToScreen = (stasks) => {
     let task = document.createElement("p"); // <p> </p>
@@ -9,7 +11,7 @@ const printNameToScreen = (stasks) => {
     subtasks.appendChild(task);
 }
 
-const retrieveData = () => {
+const getSubtask = () => {
     fetch("http://localhost:8080/subtask/readAll")
     .then((response) => {
         // check that the response is OK (i.e. 200)
@@ -21,10 +23,10 @@ const retrieveData = () => {
             //json-ify it (which returns a promise)
             response.json().then((infofromserver) =>{
                 console.log(infofromserver);
-                console.log(infofromserver.data); // key - return array(6)
-                for(let users of infofromserver.data){
-                    console.log(users.subtaskescription);
-                    printNameToScreen(users.subtaskDescription);
+                console.log(infofromserver); // key - return array(6)
+                for(let tasks of infofromserver){
+                    console.log(tasks.subtaskDescription);
+                    printNameToScreen(tasks.subtaskDescription);
                 }
             })
         }
@@ -33,4 +35,33 @@ const retrieveData = () => {
     })
 }
 
-retrieveData();
+const createSubtask = () => {
+    const subtaskDescriptionValue = subtaskDesc.value; 
+    const effortLevelValue = eLevel.value;
+
+    let data = {
+        subtaskDescription: subtaskDescriptionValue, 
+        effortLevel: effortLevelValue
+    }
+
+    fetch("http://localhost:8080/subtask/create",{
+        method: "POST", 
+        body: JSON.stringify(data),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(info => {
+        console.log(info);
+        alert.setAttribute("class", "alert alert-success"); 
+        alert.innerHTML = "User has been successfully created!"; 
+        setTimeout( () => {
+           alert.removeAttribute("class"); 
+           alert.innerHTML = ""; 
+        },2000);
+    })
+    .catch(err => console.error(`Stopppppp! ${err}`));
+}
+
+getSubtask();
