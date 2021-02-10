@@ -2,7 +2,8 @@
 
 const subtasks = document.querySelector("#subtasks");
 const subtaskDesc = document.querySelector("#subtaskDescription");
-const eLevel = document.querySelector("#eLevel");    
+const eLevel = document.querySelector("#eLevel"); 
+const alert = document.querySelector("#onsuccess");   
 
 const printNameToScreen = (stasks) => {
     let task = document.createElement("p"); // <p> </p>
@@ -27,6 +28,7 @@ const getSubtask = () => {
                 for(let tasks of infofromserver){
                     console.log(tasks.subtaskDescription);
                     printNameToScreen(tasks.subtaskDescription);
+                    // printNameToScreen(tasks.effortLevel);
                 }
             })
         }
@@ -54,11 +56,11 @@ const createSubtask = () => {
     .then(response => response.json())
     .then(info => {
         console.log(info);
-        alert.setAttribute("class", "alert alert-success"); 
-        alert.innerHTML = "User has been successfully created!"; 
+       alert.setAttribute("class", "alert alert-success"); 
+       alert.innerHTML = "Subtask has been successfully created!"; 
         setTimeout( () => {
-           alert.removeAttribute("class"); 
-           alert.innerHTML = ""; 
+          alert.removeAttribute("class"); 
+          alert.innerHTML = "";  
         },2000);
     })
     .catch(err => console.error(`Stopppppp! ${err}`));
