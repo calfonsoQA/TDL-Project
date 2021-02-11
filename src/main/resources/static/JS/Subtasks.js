@@ -5,9 +5,11 @@ const checkDone = document.querySelector("#checkerDone");
 const subtasks = document.querySelector("#subtasks");
 const effortOutput = document.querySelector("#eLevelDisplay");
 const deleteButton = document.querySelector("#deleteButton");
-// const display = document.querySelector("#taskDisplayRow"); 
 let display = document.querySelector("table"); 
 // const check = 
+
+
+const testDeleteButton = document.querySelector("#testDelete");
 //--------------------------------------------------------------
 
 //---------- FOR CREATE FORM------------------------------------
@@ -42,7 +44,7 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     let del = document.createElement("BUTTON");
     del.innerHTML = "X";
     del.setAttribute("class","btn btn-danger");
-    del.setAttribute("id",`${taskId}`);
+    del.setAttribute("task_id",`${taskId}`);
     d.appendChild(del);
     deleteButton.appendChild(d);
 
@@ -115,5 +117,37 @@ const createSubtask = () => {
     })
     .catch(err => console.error(`Stopppppp! ${err}`));
 }
+
+const deleteSubtask = (id) => {
+    
+
+    fetch("http://localhost:8080/subtask/delete/"+id,{
+        method: "DELETE",
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    // .then(response => response.json())
+    .then(response => {
+        console.log(response);
+       alert.setAttribute("class", "alert alert-success"); 
+       alert.innerHTML = "Subtask has been successfully deleted!"; 
+        setTimeout( () => {
+          alert.removeAttribute("class"); 
+          alert.innerHTML = "";  
+        },2000);
+    })
+    .catch(err => console.error(`Stopppppp! ${err}`));
+}
+
+const getTaskID = () =>{
+    let del = deleteButton.querySelector("button");
+    console.log(del);
+    let task_id = del.getAttribute("task_id");
+
+    deleteSubtask(task_id);
+}
+
+deleteButton.addEventListener("click", getTaskID);
 
 getSubtask();
