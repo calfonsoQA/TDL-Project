@@ -22,7 +22,7 @@ const alert = document.querySelector("#onsuccess");
 //     subtasks.appendChild(task);
 // }
 
-const printTaskToScreen = (done,stasks,effort) => {
+const printTaskToScreen = (done,stasks,effort,taskId) => {
     let doneStatus = document.createElement("p"); // <p> </p>
     let text = document.createTextNode(`${done}`); // username
     doneStatus.appendChild(text); // <p> username </p>
@@ -41,7 +41,8 @@ const printTaskToScreen = (done,stasks,effort) => {
     let d = document.createElement("p"); // <p> </p>
     let del = document.createElement("BUTTON");
     del.innerHTML = "X";
-    deleteButton.setAttribute("class","btn btn-danger");
+    del.setAttribute("class","btn btn-danger");
+    del.setAttribute("id",`${taskId}`);
     d.appendChild(del);
     deleteButton.appendChild(d);
 
@@ -75,7 +76,7 @@ const getSubtask = () => {
                 // generateTableHead(display,Object.keys(infofromserver[0]));
                 for(let tasks of infofromserver){
                     console.log(tasks.subtaskDescription);
-                    printTaskToScreen(tasks.done,tasks.subtaskDescription,tasks.effortLevel);
+                    printTaskToScreen(tasks.done,tasks.subtaskDescription,tasks.effortLevel,tasks.id);
                     // printNameToScreen(tasks.effortLevel);
                     // printTaskToScreen(tasks.done,tasks.subtaskDescription);
                 }
