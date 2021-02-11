@@ -141,13 +141,24 @@ const deleteSubtask = (id) => {
 }
 
 const getTaskID = () =>{
-    let del = deleteButton.querySelector("button");
+    const del = deleteButton.querySelectorAll("button");
     console.log(del);
+    // let task_id = del.getAttribute("task_id");
+
+    // del.addEventListener("click",deleteSubtask(task_id));
+}
+const getTaskID2 = () =>{
+    
+    // console.log(del);
     let task_id = del.getAttribute("task_id");
 
     deleteSubtask(task_id);
 }
 
-deleteButton.addEventListener("click", getTaskID);
+// let del = deleteButton.querySelector("button");
+// del.addEventListener("click", getTaskID2);
+
+
 
 getSubtask();
+getTaskID();
