@@ -3,8 +3,10 @@
 const subtasks = document.querySelector("#subtasks");
 const subtaskDesc = document.querySelector("#subtaskDescription");
 const eLevel = document.querySelector("#eLevel"); 
-const alert = document.querySelector("#onsuccess");   
-const check = 
+const alert = document.querySelector("#onsuccess");  
+// const display = document.querySelector("#taskDisplayRow"); 
+let display = document.querySelector("table"); 
+// const check = 
 
 const printTaskToScreen = (stasks) => {
     let task = document.createElement("p"); // <p> </p>
@@ -12,6 +14,17 @@ const printTaskToScreen = (stasks) => {
     task.appendChild(text); // <p> username </p>
     subtasks.appendChild(task);
 }
+
+function generateTableHead(table, data) {
+    let thead = table.createTHead();
+    let row = thead.insertRow();
+    for (let key of data) {
+      let th = document.createElement("th");
+      let text = document.createTextNode(key);
+      th.appendChild(text);
+      row.appendChild(th);
+    }
+  }
 
 const getSubtask = () => {
     fetch("http://localhost:8080/subtask/readAll")
@@ -26,6 +39,7 @@ const getSubtask = () => {
             response.json().then((infofromserver) =>{
                 console.log(infofromserver);
                 console.log(infofromserver); // key - return array(6)
+                generateTableHead(display,Object.keys(infofromserver[0]));
                 for(let tasks of infofromserver){
                     console.log(tasks.subtaskDescription);
                     printTaskToScreen(tasks.subtaskDescription);
