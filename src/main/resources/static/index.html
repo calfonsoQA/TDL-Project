@@ -4,24 +4,25 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" href=""> -->
-        
-        <!-- <link rel="stylesheet" href="styles.css"> -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous">
-    </head>
-    <body>
-        <div class="container">
-            <nav class="navbar navbar-light bg-light">
-                <a href="link/to/page" class="navbar-brand">To Do List</a>
-                <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#hasToMatch">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href=""> -->
+
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-light bg-light">
+            <a href="link/to/page" class="navbar-brand">To Do List</a>
+            <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#hasToMatch">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="hasToMatch">
@@ -37,51 +38,77 @@
                         </li>
                     </ul>
                 </div> -->
-            </nav>
-            <div class="row" id="firstRow">
-                <div class="col-md">
-                    <div class="alert alert-primary">
-                        <div class="alert" id="onsuccess"></div>
-                        <div id="subtaskCreate">
-                            <input type="text" class="form-control" id="subtaskDescription" placeholder="Task Description:" />
-                    <input type="text" class="form-control" id="eLevel" placeholder="Effort Level:" />
+        </nav>
+        <div class="row" id="firstRow">
+            <div class="col-md">
+                <div class="alert alert-primary">
+                    <div class="alert" id="onsuccess"></div>
+                    <div id="subtaskCreate">
+                        <input type="text" class="form-control" id="subtaskDescription"
+                            placeholder="Task Description:" />
+                        <input type="text" class="form-control" id="eLevel" placeholder="Effort Level:" />
                     </div>
-                    
-                        <button type="button" class="btn btn-success" onclick="createSubtask()" data-dismiss="modal">Create</button>
-                        <!-- <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button> -->
-                        </div>
-                    
-                </div>
-            </div>
-            <table>
-                <!-- here goes our data! -->
-                </table>
-            <div class="row" id="taskDisplayRow">
-                <div class="col-md">
-                    <div class="alert alert-primary">
-                        <div id="tasklist" class="col-6 wireframe">
-                            <div id="subtasks"></div>
-                        </div>
-                        
 
-                    </div>
+                    <button type="button" class="btn btn-success" onclick="createSubtask()"
+                        data-dismiss="modal">Create</button>
+                    <!-- <button type="button" data-dismiss="modal" class="btn btn-danger">Close</button> -->
                 </div>
-                
-               
+
             </div>
-            <div class ="col-md">deer2               r2e l</div>
         </div>
-        
-        <!-- <script src="" async defer></script> -->
-        <script src="./JS/Subtasks.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    </body>
+        <table>
+           
+        </table>
+        <!-- <div class="row" id="taskDisplayRow">
+            <div class="col-md">
+                <div class="alert alert-primary">
+                    <div id="tasklist" class="col- wireframe">
+                        <div id="checkerDone"></div>
+                    </div>
+                    <div id="tasklist" class="col-5 wireframe">
+                        <div id="subtasks"></div>
+                    </div>
+                    <div id="tasklist" class="col-5 wireframe">
+                        <div id="effortLevel"></div>3
+                    </div>
+
+
+                </div>
+            </div>
+        </div> -->
+        <div class="container wireframe">
+            <div class="row justify-content-around row-wireframe">
+                <div class="col-2 wireframe">
+                    <h4>✔️</h4>
+                    <div class="col-md"></div>
+                    
+                </div>
+                <div class="col-4 wireframe">
+                    <h4>Description</h4>
+                    <div id="subtasks"></div>
+                </div>
+                <div class="col-2 wireframe">
+                    <h4>Effort Level</h4>
+                </div>
+                <div class="col-1 wireframe">
+                    <h4>Delete</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <script src="" async defer></script> -->
+    <script src="./JS/Subtasks.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

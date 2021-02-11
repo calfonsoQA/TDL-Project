@@ -8,6 +8,13 @@ const alert = document.querySelector("#onsuccess");
 let display = document.querySelector("table"); 
 // const check = 
 
+// const printTaskToScreen = (stasks) => {
+//     let task = document.createElement("p"); // <p> </p>
+//     let text = document.createTextNode(`${stasks}`); // username
+//     task.appendChild(text); // <p> username </p>
+//     subtasks.appendChild(task);
+// }
+
 const printTaskToScreen = (stasks) => {
     let task = document.createElement("p"); // <p> </p>
     let text = document.createTextNode(`${stasks}`); // username
@@ -39,7 +46,7 @@ const getSubtask = () => {
             response.json().then((infofromserver) =>{
                 console.log(infofromserver);
                 console.log(infofromserver); // key - return array(6)
-                generateTableHead(display,Object.keys(infofromserver[0]));
+                // generateTableHead(display,Object.keys(infofromserver[0]));
                 for(let tasks of infofromserver){
                     console.log(tasks.subtaskDescription);
                     printTaskToScreen(tasks.subtaskDescription);
