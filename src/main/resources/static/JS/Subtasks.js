@@ -7,7 +7,7 @@ const effortOutput = document.querySelector("#eLevelDisplay");
 const deleteButton = document.querySelector("#deleteButton");
 let display = document.querySelector("table"); 
 // const check = 
-
+const taskListOutput = document.querySelector("#subtaskLists");
 
 const testDeleteButton = document.querySelector("#testDelete");
 //--------------------------------------------------------------
@@ -23,33 +23,52 @@ const alert = document.querySelector("#onsuccess");
 //     task.appendChild(text); // <p> username </p>
 //     subtasks.appendChild(task);
 // }
-
 const printTaskToScreen = (done,stasks,effort,taskId) => {
+    let taskrow = document.createElement("div");
+    taskrow.className="row justify-content-around row-wireframe";
+
+    let doneColumn = document.createElement("div");
+    doneColumn.className="col-2 wireframe";
     let doneStatus = document.createElement("p"); // <p> </p>
     let text = document.createTextNode(`${done}`); // username
-    doneStatus.appendChild(text); // <p> username </p>
-    checkDone.appendChild(doneStatus);
+    doneColumn.appendChild(text); // <p> username </p>
 
+
+    let taskColumn = document.createElement("div");
+    taskColumn.className="col-4 wireframe";
     let task = document.createElement("p"); // <p> </p>
     let text2 = document.createTextNode(`${stasks}`); // username
-    task.appendChild(text2); // <p> username </p>
-    subtasks.appendChild(task);
+    taskColumn.appendChild(text2); // <p> username </p>
 
+
+    let effortColumn = document.createElement("div");
+    effortColumn.className="col-4 wireframe";
     let e = document.createElement("p"); // <p> </p>
     let text3 = document.createTextNode(`${effort}`); // username
-    e.appendChild(text3); // <p> username </p>
-    effortOutput.appendChild(e);
+    effortColumn.appendChild(text3); // <p> username </p>
 
+
+    let deleteColumn = document.createElement("div");
+    deleteColumn.className="col-2 wireframe";
     let d = document.createElement("p"); // <p> </p>
     let del = document.createElement("BUTTON");
-    del.innerHTML = "X";
+    del.innerHTML = "x";
     del.setAttribute("class","btn btn-danger");
     del.setAttribute("task_id",`${taskId}`);
-    d.appendChild(del);
-    deleteButton.appendChild(d);
+    let id = del.getAttribute("task_id");
+    // del.addEventListener("click", deleteSubtask(id));
+    deleteColumn.appendChild(del);
+    
 
+    taskrow.appendChild(doneColumn);
+    taskrow.appendChild(taskColumn);
+    taskrow.appendChild(effortColumn);
+    taskrow.appendChild(deleteColumn);
+    
+    taskListOutput.appendChild(taskrow);
 
 }
+
 
 function generateTableHead(table, data) {
     let thead = table.createTHead();
@@ -161,4 +180,32 @@ const getTaskID2 = () =>{
 
 
 getSubtask();
-getTaskID();
+// getTaskID();
+
+
+// const printTaskToScreen = (done,stasks,effort,taskId) => {
+//     let doneStatus = document.createElement("p"); // <p> </p>
+//     let text = document.createTextNode(`${done}`); // username
+//     doneStatus.appendChild(text); // <p> username </p>
+//     checkDone.appendChild(doneStatus);
+
+//     let task = document.createElement("p"); // <p> </p>
+//     let text2 = document.createTextNode(`${stasks}`); // username
+//     task.appendChild(text2); // <p> username </p>
+//     subtasks.appendChild(task);
+
+//     let e = document.createElement("p"); // <p> </p>
+//     let text3 = document.createTextNode(`${effort}`); // username
+//     e.appendChild(text3); // <p> username </p>
+//     effortOutput.appendChild(e);
+
+//     let d = document.createElement("p"); // <p> </p>
+//     let del = document.createElement("BUTTON");
+//     del.innerHTML = "X";
+//     del.setAttribute("class","btn btn-danger");
+//     del.setAttribute("task_id",`${taskId}`);
+//     d.appendChild(del);
+//     deleteButton.appendChild(d);
+
+
+// }
