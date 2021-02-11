@@ -4,6 +4,7 @@
 const checkDone = document.querySelector("#checkerDone");
 const subtasks = document.querySelector("#subtasks");
 const effortOutput = document.querySelector("#eLevelDisplay");
+const deleteButton = document.querySelector("#deleteButton");
 // const display = document.querySelector("#taskDisplayRow"); 
 let display = document.querySelector("table"); 
 // const check = 
@@ -36,6 +37,14 @@ const printTaskToScreen = (done,stasks,effort) => {
     let text3 = document.createTextNode(`${effort}`); // username
     e.appendChild(text3); // <p> username </p>
     effortOutput.appendChild(e);
+
+    let d = document.createElement("p"); // <p> </p>
+    let del = document.createElement("BUTTON");
+    del.innerHTML = "X";
+    deleteButton.setAttribute("class","btn btn-danger");
+    d.appendChild(del);
+    deleteButton.appendChild(d);
+
 
 }
 
