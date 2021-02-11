@@ -1,13 +1,19 @@
 'use strict';
 
+//---------- FOR DISPLAYING TASKS------------------------------
+const checkDone = document.querySelector("#checkerDone");
 const subtasks = document.querySelector("#subtasks");
-const subtaskDesc = document.querySelector("#subtaskDescription");
-const eLevel = document.querySelector("#eLevel"); 
-const alert = document.querySelector("#onsuccess");  
+const effortOutput = document.querySelector("#eLevelDisplay");
 // const display = document.querySelector("#taskDisplayRow"); 
 let display = document.querySelector("table"); 
 // const check = 
+//--------------------------------------------------------------
 
+//---------- FOR CREATE FORM------------------------------------
+const subtaskDesc = document.querySelector("#subtaskDescription");
+const eLevel = document.querySelector("#eLevel"); 
+const alert = document.querySelector("#onsuccess");  
+//--------------------------------------------------------------
 // const printTaskToScreen = (stasks) => {
 //     let task = document.createElement("p"); // <p> </p>
 //     let text = document.createTextNode(`${stasks}`); // username
@@ -15,11 +21,22 @@ let display = document.querySelector("table");
 //     subtasks.appendChild(task);
 // }
 
-const printTaskToScreen = (stasks) => {
+const printTaskToScreen = (done,stasks,effort) => {
+    let doneStatus = document.createElement("p"); // <p> </p>
+    let text = document.createTextNode(`${done}`); // username
+    doneStatus.appendChild(text); // <p> username </p>
+    checkDone.appendChild(doneStatus);
+
     let task = document.createElement("p"); // <p> </p>
-    let text = document.createTextNode(`${stasks}`); // username
-    task.appendChild(text); // <p> username </p>
+    let text2 = document.createTextNode(`${stasks}`); // username
+    task.appendChild(text2); // <p> username </p>
     subtasks.appendChild(task);
+
+    let e = document.createElement("p"); // <p> </p>
+    let text3 = document.createTextNode(`${effort}`); // username
+    e.appendChild(text3); // <p> username </p>
+    effortOutput.appendChild(e);
+
 }
 
 function generateTableHead(table, data) {
@@ -49,8 +66,9 @@ const getSubtask = () => {
                 // generateTableHead(display,Object.keys(infofromserver[0]));
                 for(let tasks of infofromserver){
                     console.log(tasks.subtaskDescription);
-                    printTaskToScreen(tasks.subtaskDescription);
+                    printTaskToScreen(tasks.done,tasks.subtaskDescription,tasks.effortLevel);
                     // printNameToScreen(tasks.effortLevel);
+                    // printTaskToScreen(tasks.done,tasks.subtaskDescription);
                 }
             })
         }
