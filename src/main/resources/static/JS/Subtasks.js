@@ -4,8 +4,9 @@ const subtasks = document.querySelector("#subtasks");
 const subtaskDesc = document.querySelector("#subtaskDescription");
 const eLevel = document.querySelector("#eLevel"); 
 const alert = document.querySelector("#onsuccess");   
+const check = 
 
-const printNameToScreen = (stasks) => {
+const printTaskToScreen = (stasks) => {
     let task = document.createElement("p"); // <p> </p>
     let text = document.createTextNode(`${stasks}`); // username
     task.appendChild(text); // <p> username </p>
@@ -27,7 +28,7 @@ const getSubtask = () => {
                 console.log(infofromserver); // key - return array(6)
                 for(let tasks of infofromserver){
                     console.log(tasks.subtaskDescription);
-                    printNameToScreen(tasks.subtaskDescription);
+                    printTaskToScreen(tasks.subtaskDescription);
                     // printNameToScreen(tasks.effortLevel);
                 }
             })
