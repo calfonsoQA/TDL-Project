@@ -26,6 +26,8 @@ const alert = document.querySelector("#onsuccess");
 const printTaskToScreen = (done,stasks,effort,taskId) => {
     let taskrow = document.createElement("div");
     taskrow.className="row justify-content-around row-wireframe";
+    let taskrowinside = document.createElement("div");
+    taskrowinside.className="alert alert-primary";
 
     let doneColumn = document.createElement("div");
     doneColumn.className="col-2 wireframe";
@@ -56,7 +58,9 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     del.setAttribute("class","btn btn-danger");
     del.setAttribute("task_id",`${taskId}`);
     let id = del.getAttribute("task_id");
+    // del.onclick = deleteSubtask(id);
     // del.addEventListener("click", deleteSubtask(id));
+    del.setAttribute("onclick", `deleteSubtask(${id})`);
     deleteColumn.appendChild(del);
     
 
@@ -64,8 +68,9 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     taskrow.appendChild(taskColumn);
     taskrow.appendChild(effortColumn);
     taskrow.appendChild(deleteColumn);
+    taskrowinside.appendChild(taskrow);
     
-    taskListOutput.appendChild(taskrow);
+    taskListOutput.appendChild(taskrowinside);
 
 }
 
