@@ -23,10 +23,10 @@ public class SubtaskDomain {
     private String subtaskDescription;
     
     @Column
-    private int effortLevel;
+    private Integer effortLevel;
 
     @Column
-    private boolean done;
+    private Boolean done;
     
     @ManyToOne
     private TaskDomain myTask;
@@ -36,7 +36,7 @@ public class SubtaskDomain {
         super();
     }
 
-	public SubtaskDomain(String subtaskDescription, int effortLevel, boolean done,
+	public SubtaskDomain(String subtaskDescription, Integer effortLevel, Boolean done,
 			TaskDomain myTask) {
 		super();
 		this.subtaskDescription = subtaskDescription;
@@ -45,7 +45,7 @@ public class SubtaskDomain {
 		this.myTask = myTask;
 	}
 
-	public SubtaskDomain(long id, String subtaskDescription, int effortLevel, boolean done,
+	public SubtaskDomain(Long id, String subtaskDescription, Integer effortLevel, Boolean done,
 			TaskDomain myTask) {
 		super();
 		this.id = id;
@@ -59,7 +59,7 @@ public class SubtaskDomain {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -71,19 +71,19 @@ public class SubtaskDomain {
 		this.subtaskDescription = subtaskDescription;
 	}
 
-	public int isEffortLevel() {
+	public int getEffortLevel() {
 		return effortLevel;
 	}
 
-	public void setEffortLevel(int effortLevel) {
+	public void setEffortLevel(Integer effortLevel) {
 		this.effortLevel = effortLevel;
 	}
 
-	public boolean isDone() {
+	public Boolean getDone() {
 		return done;
 	}
 
-	public void setDone(boolean done) {
+	public void setDone(Boolean done) {
 		this.done = done;
 	}
 

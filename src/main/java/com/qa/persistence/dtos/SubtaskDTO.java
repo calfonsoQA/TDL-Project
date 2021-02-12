@@ -1,23 +1,21 @@
 package com.qa.persistence.dtos;
 
-import javax.persistence.Column;
-
 public class SubtaskDTO {
 
 	private Long Id;
 
 	private String subtaskDescription;
 
-	private int effortLevel;
+	private Integer effortLevel;
 
-	private boolean done;
+	private Boolean done;
 
 	public SubtaskDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public SubtaskDTO(Long id, String subtaskDescription, int effortLevel, boolean done) {
+	public SubtaskDTO(Long id, String subtaskDescription, Integer effortLevel, Boolean done) {
 		super();
 		Id = id;
 		this.subtaskDescription = subtaskDescription;
@@ -41,19 +39,19 @@ public class SubtaskDTO {
 		this.subtaskDescription = subtaskDescription;
 	}
 
-	public int getEffortLevel() {
+	public Integer getEffortLevel() {
 		return effortLevel;
 	}
 
-	public void setEffortLevel(int effortLevel) {
+	public void setEffortLevel(Integer effortLevel) {
 		this.effortLevel = effortLevel;
 	}
 
-	public boolean isDone() {
+	public Boolean getDone() {
 		return done;
 	}
 
-	public void setDone(boolean done) {
+	public void setDone(Boolean done) {
 		this.done = done;
 	}
 

@@ -53,11 +53,12 @@ public class SubtaskService {
 
        SubtaskDomain subtaskCurrent = this.repo.findById(id).orElseThrow();
        
-       boolean doneStatus=subtaskCurrent.isDone();
-       
-       newSubtask.setDone(doneStatus);
+//       boolean doneStatus=subtaskCurrent.isDone();
+//       
+//       newSubtask.setDone(doneStatus);
     
        MyBeanUtils.mergeNotNull(newSubtask, subtaskCurrent);
+//       MyBeanUtils.mergeNotNull(subtaskCurrent, newSubtask);
         
 
         return this.mapToDTO(this.repo.save(subtaskCurrent));
