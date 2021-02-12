@@ -52,18 +52,15 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     let text = document.createTextNode(`${done}`); 
     doneColumn.appendChild(text); 
 
-
     let taskColumn = document.createElement("div");
     taskColumn.className="col-4 wireframe";
     let text2 = document.createTextNode(`${stasks}`); 
     taskColumn.appendChild(text2); 
 
-
     let effortColumn = document.createElement("div");
     effortColumn.className="col-2 wireframe";
     let text3 = document.createTextNode(`${effort}`); 
     effortColumn.appendChild(text3); 
-
 
     let deleteColumn = document.createElement("div");
     deleteColumn.className="col-2 wireframe";
@@ -76,7 +73,7 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     // del.addEventListener("click", deleteSubtask(id));
     del.setAttribute("onclick", `deleteSubtask(${taskId})`);
     deleteColumn.appendChild(del);
-    
+
     taskrow.appendChild(editColumn);
     taskrow.appendChild(doneColumn);
     taskrow.appendChild(taskColumn);
@@ -147,10 +144,12 @@ const createSubtask = () => {
     .then(info => {
         console.log(info);
        alert.setAttribute("class", "alert alert-success"); 
-       alert.innerHTML = "Subtask has been successfully created!"; 
+       alert.innerHTML = "Subtask has been successfully created!";
+       getSubtask(); 
         setTimeout( () => {
           alert.removeAttribute("class"); 
-          alert.innerHTML = "";  
+          alert.innerHTML = ""; 
+           
         },2000);
     })
     .catch(err => console.error(`Stopppppp! ${err}`));
