@@ -51,27 +51,25 @@
 
                     <button type="button" class="btn btn-success" onclick="createSubtask()"
                         data-dismiss="modal">Create</button>
-                    <!-- <button type="button" class="btn btn-danger" onclick="deleteSubtask(3)"
-                    data-dismiss="modal">Delete</button> -->
                 </div>
 
             </div>
         </div>
         <table>
-           
+
         </table>
-       
-        <div class="container wireframe" id = "subtaskLists">
-            
+
+        <div class="container wireframe" id="subtaskLists">
+
             <div class="row justify-content-around row-wireframe">
                 <div class="col-2 wireframe">
-                    
+
                 </div>
                 <div class="col-2 wireframe">
                     <h5>Done</h5>
                 </div>
                 <div class="col-4 wireframe">
-                    <h5>Description</h5>                  
+                    <h5>Description</h5>
                 </div>
                 <div class="col-2 wireframe">
                     <h5>Effort</h5>
@@ -80,10 +78,25 @@
                     <h5>Delete</h5>
                 </div>
             </div>
-            
+
 
         </div>
-    <!-- </div> -->
+        <div class="row" id="firstRow">
+            <div class="col-md">
+                <div class="alert alert-primary">
+                    <div class="alert" id="onsuccessPUT"></div>
+                    <div id="subtaskUpdate">
+                        <input type="text" class="form-control" id="subtaskDescriptionPUT"
+                            placeholder="Updated Task Description:" />
+                        <input type="text" class="form-control" id="eLevelPUT" placeholder="Updated Effort Level:" />
+                    </div>
+
+                    <button type="button" class="btn btn-success" onclick="updateSubtask(3)"
+                        data-dismiss="modal">Update</button>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <!-- <script src="" async defer></script> -->

@@ -17,6 +17,11 @@ const subtaskDesc = document.querySelector("#subtaskDescription");
 const eLevel = document.querySelector("#eLevel"); 
 const alert = document.querySelector("#onsuccess");  
 //--------------------------------------------------------------
+//---------- FOR UPDATE FORM------------------------------------
+const subtaskDescPUT = document.querySelector("#subtaskDescriptionPUT");
+const eLevelPUT = document.querySelector("#eLevelPUT"); 
+const alertPUT = document.querySelector("#onsuccessPUT");  
+//--------------------------------------------------------------
 
 const printTaskToScreen = (done,stasks,effort,taskId) => {
     let taskrow = document.createElement("div");
@@ -138,6 +143,35 @@ const createSubtask = () => {
         setTimeout( () => {
           alert.removeAttribute("class"); 
           alert.innerHTML = "";  
+        },2000);
+    })
+    .catch(err => console.error(`Stopppppp! ${err}`));
+}
+
+const updateSubtask = (id) => {
+    const subtaskDescriptionValue = subtaskDescPUT.value; 
+    const effortLevelValue = eLevelPUT.value;
+
+    let data = {
+        subtaskDescription: subtaskDescriptionValue, 
+        effortLevel: effortLevelValue
+    }
+
+    fetch("http://localhost:8080/subtask/update/"+id,{
+        method: "PUT", 
+        body: JSON.stringify(data),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    })
+    .then(response => response.json())
+    .then(info => {
+        console.log(info);
+       alertPUT.setAttribute("class", "alert alert-success"); 
+       alertPUT.innerHTML = "Subtask has been successfully created!"; 
+        setTimeout( () => {
+            alertPUT.removeAttribute("class"); 
+            alertPUT.innerHTML = "";  
         },2000);
     })
     .catch(err => console.error(`Stopppppp! ${err}`));
