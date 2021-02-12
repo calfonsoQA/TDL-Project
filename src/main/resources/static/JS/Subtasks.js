@@ -39,7 +39,7 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     editColumn.className="col-2 wireframe";
     let edit = document.createElement("BUTTON");
     edit.innerHTML = "edit";
-    edit.setAttribute("class","btn btn-danger");
+    edit.setAttribute("class","btn btn-primary");
     edit.setAttribute("task_id",`${taskId}`);
     edit.setAttribute("data-bs-toggle", "modal");
     edit.setAttribute("data-bs-target", "#updateModalTarget");
@@ -145,7 +145,7 @@ const createSubtask = () => {
         console.log(info);
        alert.setAttribute("class", "alert alert-success"); 
        alert.innerHTML = "Subtask has been successfully created!";
-       getSubtask(); 
+    //    getSubtask(); 
         setTimeout( () => {
           alert.removeAttribute("class"); 
           alert.innerHTML = ""; 

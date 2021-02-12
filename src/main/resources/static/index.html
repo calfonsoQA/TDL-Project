@@ -42,96 +42,105 @@
         <div class="row" id="firstRow">
             <div class="col-md">
                 <div class="alert alert-primary">
-                    <div class="alert" id="onsuccess"></div>
+                    <h4>Enter a new Subtask</h4>
+
                     <div id="subtaskCreate">
                         <input type="text" class="form-control" id="subtaskDescription"
                             placeholder="Task Description:" />
                         <input type="text" class="form-control" id="eLevel" placeholder="Effort Level:" />
                     </div>
-
-                    <button type="button" class="btn btn-success" onclick="createSubtask()"
-                        data-dismiss="modal">Create</button>
-                </div>
-
-            </div>
-        </div>
-        <table>
-
-        </table>
-
-        <div class="container wireframe" id="subtaskLists">
-
-            <div class="row justify-content-around row-wireframe">
-                <div class="col-2 wireframe">
-
-                </div>
-                <div class="col-2 wireframe">
-                    <h5>Done</h5>
-                </div>
-                <div class="col-4 wireframe">
-                    <h5>Description</h5>
-                </div>
-                <div class="col-2 wireframe">
-                    <h5>Effort</h5>
-                </div>
-                <div class="col-2 wireframe">
-                    <h5>Delete</h5>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="modal" id="updateModalTarget">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title">Update Subtask</h2>
-                        <button type="button" class="close" data-bs-dismiss="modal">
-                            <span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row" id="firstRow">
-                            <div class="col-md">
-                                <div class="alert alert-primary">
-                                    
-                                    <div id="subtaskUpdate">
-                                        <input type="text" class="form-control" id="subtaskDescriptionPUT"
-                                            placeholder="Updated Task Description:" />
-                                        <input type="text" class="form-control" id="eLevelPUT"
-                                            placeholder="Updated Effort Level:" />
-                                    </div>
-
-                                    <button type="button" class="btn btn-success"
-                                        data-dismiss="modal" id="updateButtonModal">Update</button>
-                                </div>
-
-                            </div>
+                    <div class="row" id="firstRow">
+                        <div class="col-md">
+                            <button type="button" class="btn btn-success" onclick="createSubtask()"
+                                data-dismiss="modal">Create</button>
+                            
+                                
+                            
+                        </div>
+                        <div class="col-md">
+                            <div class="alert" id="onsuccess"></div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <div class="alert" id="onsuccessPUT"></div>
+
+                </div>
+            </div>
+            <table>
+
+            </table>
+
+            <div class="container wireframe" id="subtaskLists">
+
+                <div class="row justify-content-around row-wireframe">
+                    <div class="col-2 wireframe">
+
+                    </div>
+                    <div class="col-2 wireframe">
+                        <h5>Done</h5>
+                    </div>
+                    <div class="col-4 wireframe">
+                        <h5>Description</h5>
+                    </div>
+                    <div class="col-2 wireframe">
+                        <h5>Effort</h5>
+                    </div>
+                    <div class="col-2 wireframe">
+                        <h5>Delete</h5>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="modal" id="updateModalTarget">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Update Subtask</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" id="firstRow">
+                                <div class="col-md">
+                                    <div class="alert alert-primary">
+
+                                        <div id="subtaskUpdate">
+                                            <input type="text" class="form-control" id="subtaskDescriptionPUT"
+                                                placeholder="Updated Task Description:" />
+                                            <input type="text" class="form-control" id="eLevelPUT"
+                                                placeholder="Updated Effort Level:" />
+                                        </div>
+
+                                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                                            id="updateButtonModal">Update</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="alert" id="onsuccessPUT"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- <script src="" async defer></script> -->
-    <script src="./JS/Subtasks.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
+        <!-- <script src="" async defer></script> -->
+        <script src="./JS/Subtasks.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
