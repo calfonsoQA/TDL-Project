@@ -18,10 +18,16 @@ const eLevel = document.querySelector("#eLevel");
 const alert = document.querySelector("#onsuccess");  
 //--------------------------------------------------------------
 //---------- FOR UPDATE FORM------------------------------------
+const updateButtonModal = document.querySelector("#updateButtonModal");
 const subtaskDescPUT = document.querySelector("#subtaskDescriptionPUT");
 const eLevelPUT = document.querySelector("#eLevelPUT"); 
 const alertPUT = document.querySelector("#onsuccessPUT");  
 //--------------------------------------------------------------
+
+const updateSubtaskModal = (id) => {
+    updateButtonModal.setAttribute("onclick", `updateSubtask(${id})`);
+    
+}
 
 const printTaskToScreen = (done,stasks,effort,taskId) => {
     let taskrow = document.createElement("div");
@@ -35,8 +41,10 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     edit.innerHTML = "edit";
     edit.setAttribute("class","btn btn-danger");
     edit.setAttribute("task_id",`${taskId}`);
+    edit.setAttribute("data-bs-toggle", "modal");
+    edit.setAttribute("data-bs-target", "#updateModalTarget");
     // let id = edit.getAttribute("task_id");
-    // edit.setAttribute("onclick", `deleteSubtask(${id})`);
+    edit.setAttribute("onclick", `updateSubtaskModal(${taskId})`);
     editColumn.appendChild(edit);
 
     let doneColumn = document.createElement("div");
@@ -168,7 +176,7 @@ const updateSubtask = (id) => {
     .then(info => {
         console.log(info);
        alertPUT.setAttribute("class", "alert alert-success"); 
-       alertPUT.innerHTML = "Subtask has been successfully created!"; 
+       alertPUT.innerHTML = "Subtask has been successfully updated!"; 
         setTimeout( () => {
             alertPUT.removeAttribute("class"); 
             alertPUT.innerHTML = "";  
@@ -199,23 +207,7 @@ const deleteSubtask = (id) => {
     .catch(err => console.error(`Stopppppp! ${err}`));
 }
 
-const getTaskID = () =>{
-    const del = deleteButton.querySelectorAll("button");
-    console.log(del);
-    // let task_id = del.getAttribute("task_id");
 
-    // del.addEventListener("click",deleteSubtask(task_id));
-}
-const getTaskID2 = () =>{
-    
-    // console.log(del);
-    let task_id = del.getAttribute("task_id");
-
-    deleteSubtask(task_id);
-}
-
-// let del = deleteButton.querySelector("button");
-// del.addEventListener("click", getTaskID2);
 
 
 
