@@ -58,10 +58,10 @@ const printTaskToScreen = (done,stasks,effort,taskId) => {
     del.innerHTML = "x";
     del.setAttribute("class","btn btn-danger");
     del.setAttribute("task_id",`${taskId}`);
-    let id = del.getAttribute("task_id");
+    // let id = del.getAttribute("task_id");
     // del.onclick = deleteSubtask(id);
     // del.addEventListener("click", deleteSubtask(id));
-    del.setAttribute("onclick", `deleteSubtask(${id})`);
+    del.setAttribute("onclick", `deleteSubtask(${taskId})`);
     deleteColumn.appendChild(del);
     
     taskrow.appendChild(editColumn);
