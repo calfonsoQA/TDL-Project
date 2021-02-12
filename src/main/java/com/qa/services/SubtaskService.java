@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.qa.persistence.domain.SubtaskDomain;
 import com.qa.persistence.dtos.SubtaskDTO;
 import com.qa.persistence.repos.SubtaskRepo;
+import com.qa.utils.MyBeanUtils;
 
 @Service
 public class SubtaskService {
@@ -48,14 +49,18 @@ public class SubtaskService {
 	}
 	
 //	UPDATE
-	public SubtaskDTO update(Long id, SubtaskDomain newSubtask) {
+	public SubtaskDTO update(Long id, SubtaskDTO newSubtask) {
 
-       this.repo.findById(id).orElseThrow();
-    
-       newSubtask.setId(id);
+       SubtaskDomain subtaskCurrent = this.repo.findById(id).orElseThrow();
        
+       boolean doneStatus=subtaskCurrent.isDone();
+       
+       newSubtask.setDone(doneStatus);
+    
+       MyBeanUtils.mergeNotNull(newSubtask, subtaskCurrent);
+        
 
-        return this.mapToDTO(this.repo.save(newSubtask));
+        return this.mapToDTO(this.repo.save(subtaskCurrent));
     }
 
 //	DELETE

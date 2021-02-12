@@ -129,7 +129,7 @@ public class SubtaskServiceTest {
 		Mockito.when(this.mockedMapper.map(oldTestSubtask, SubtaskDTO.class)).thenReturn(oldTestDTO);
 		
 		// ACTIONS
-		SubtaskDTO result = this.service.update(1L, testSubtask);
+		SubtaskDTO result = this.service.update(1L, testDTO);
 
 		// ASSERTIONS
 		Assertions.assertThat(result).isEqualTo(testDTO);

@@ -55,8 +55,8 @@ public class SubtaskController {
 	}
 
 	@PutMapping("/update/{id}")
-	public ResponseEntity<SubtaskDTO> update(@PathVariable("id") Long id, @RequestBody SubtaskDomain subtask) {
-		return new ResponseEntity<SubtaskDTO>(this.service.update(id, subtask), HttpStatus.ACCEPTED);
+	public ResponseEntity<Object> update(@PathVariable("id") Long id, @RequestBody SubtaskDTO subtask) {
+		return new ResponseEntity<>(this.service.update(id, subtask), HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("/delete/{id}")

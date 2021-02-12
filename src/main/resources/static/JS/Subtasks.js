@@ -190,7 +190,8 @@ const updateSubtask = (id) => {
 
     let data = {
         subtaskDescription: subtaskDescriptionValue,
-        effortLevel: effortLevelValue
+        effortLevel: effortLevelValue,
+        done:done
     }
 
     fetch("http://localhost:8080/subtask/update/" + id, {

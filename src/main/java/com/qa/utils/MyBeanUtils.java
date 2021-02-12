@@ -25,8 +25,9 @@ public class MyBeanUtils {
 
 		Set<String> names = new HashSet<>();
 		for (PropertyDescriptor pd : src.getPropertyDescriptors()) {
-			if (src.getPropertyValue(pd.getName()) == null)
+			if (src.getPropertyValue(pd.getName()) == null) {
 				names.add(pd.getName());
+				}
 		}
 		return names.toArray(new String[names.size()]);
 	}
