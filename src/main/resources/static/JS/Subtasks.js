@@ -97,35 +97,8 @@ function generateTableHead(table, data) {
     }
 }
 
-const getSubtask = () => {
-    fetch("http://localhost:8080/subtask/readAll")
-        .then((response) => {
-            // check that the response is OK (i.e. 200)
-            if (response.status !== 200) {
-                throw new Error("I don't have a status of 200");
-            } else {
-                console.log(response);
-                console.log(`response is OK (200)`);
-                //json-ify it (which returns a promise)
-                response.json().then((infofromserver) => {
-                    console.log(infofromserver);
-                    console.log(infofromserver); // key - return array(6)
-                    // generateTableHead(display,Object.keys(infofromserver[0]));
-                    for (let tasks of infofromserver) {               
-                            console.log(tasks.subtaskDescription);
-                            printTaskToScreen(tasks.done, tasks.subtaskDescription, tasks.effortLevel, tasks.id);
-                            // printNameToScreen(tasks.effortLevel);
-                            // printTaskToScreen(tasks.done,tasks.subtaskDescription);                     
-                    }
-                })
-            }
-        }).catch((err) => {
-            console.error(err);
-        })
-}
-
-// const getTask = () => {
-//     fetch("http://localhost:8080/task/readAll")
+// const getSubtask = () => {
+//     fetch("http://localhost:8080/subtask/readAll")
 //         .then((response) => {
 //             // check that the response is OK (i.e. 200)
 //             if (response.status !== 200) {
@@ -138,13 +111,11 @@ const getSubtask = () => {
 //                     console.log(infofromserver);
 //                     console.log(infofromserver); // key - return array(6)
 //                     // generateTableHead(display,Object.keys(infofromserver[0]));
-//                     for (let tasks of infofromserver) {
-//                         for (let subtasks of tasks.subtaskList) {
-//                             console.log(subtasks.subtaskDescription);
-//                             printTaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id);
+//                     for (let tasks of infofromserver) {               
+//                             console.log(tasks.subtaskDescription);
+//                             printTaskToScreen(tasks.done, tasks.subtaskDescription, tasks.effortLevel, tasks.id);
 //                             // printNameToScreen(tasks.effortLevel);
-//                             // printTaskToScreen(tasks.done,tasks.subtaskDescription);
-//                         }
+//                             // printTaskToScreen(tasks.done,tasks.subtaskDescription);                     
 //                     }
 //                 })
 //             }
@@ -152,6 +123,35 @@ const getSubtask = () => {
 //             console.error(err);
 //         })
 // }
+
+const getSubtask = () => {
+    fetch("http://localhost:8080/task/readAll")
+        .then((response) => {
+            // check that the response is OK (i.e. 200)
+            if (response.status !== 200) {
+                throw new Error("I don't have a status of 200");
+            } else {
+                console.log(response);
+                console.log(`response is OK (200)`);
+                //json-ify it (which returns a promise)
+                response.json().then((infofromserver) => {
+                    console.log(infofromserver);
+                    console.log(infofromserver); // key - return array(6)
+                    // generateTableHead(display,Object.keys(infofromserver[0]));
+                    for (let tasks of infofromserver) {
+                        for (let subtasks of tasks.subtaskList) {
+                            console.log(subtasks.subtaskDescription);
+                            printTaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id);
+                            // printNameToScreen(tasks.effortLevel);
+                            // printTaskToScreen(tasks.done,tasks.subtaskDescription);
+                        }
+                    }
+                })
+            }
+        }).catch((err) => {
+            console.error(err);
+        })
+}
 
 const createSubtask = () => {
     const subtaskDescriptionValue = subtaskDesc.value;
@@ -190,8 +190,7 @@ const updateSubtask = (id) => {
 
     let data = {
         subtaskDescription: subtaskDescriptionValue,
-        effortLevel: effortLevelValue,
-        done:done
+        effortLevel: effortLevelValue
     }
 
     fetch("http://localhost:8080/subtask/update/" + id, {
