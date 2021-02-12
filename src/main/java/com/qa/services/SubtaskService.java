@@ -49,7 +49,7 @@ public class SubtaskService {
 	
 //	UPDATE
 	public SubtaskDTO update(Long id, SubtaskDomain newSubtask) {
-//        Optional<User> existingOptional = this.repo.findById(id);
+
        this.repo.findById(id).orElseThrow();
     
        newSubtask.setId(id);
