@@ -1,5 +1,7 @@
 package com.qa.services;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +32,7 @@ public class TaskServiceUnitTest {
 
 	@Test
 	public void justRun() {
-
+		assertTrue(true);
 	}
 
 	@Test

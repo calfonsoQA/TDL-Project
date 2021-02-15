@@ -2,8 +2,6 @@ package com.qa.persistence.domain;
 
 import java.util.List;
 
-//import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

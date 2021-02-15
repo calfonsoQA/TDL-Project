@@ -12,7 +12,6 @@ public class SubtaskDTO {
 
 	public SubtaskDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public SubtaskDTO(Long id, String subtaskDescription, Integer effortLevel, Boolean done) {

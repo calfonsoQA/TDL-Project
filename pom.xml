@@ -10,13 +10,15 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.qa</groupId>
-	<artifactId>Account-Example</artifactId>
+	<artifactId>tdl-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Account-Example</name>
+	<name>TDL-Project</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		
 	</properties>
+	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

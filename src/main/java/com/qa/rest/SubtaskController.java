@@ -61,7 +61,6 @@ public class SubtaskController {
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
-		// Remove Person and return it
 		return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
