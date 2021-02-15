@@ -9,7 +9,10 @@ const taskListOutput = document.querySelector("#subtaskLists");
 const testDeleteButton = document.querySelector("#testDelete");
 //--------------------------------------------------------------
 
-//---------- FOR CREATE FORM------------------------------------
+//---------- FOR TASK CREATE FORM------------------------------------
+const taskName = document.querySelector("#taskName");
+//--------------------------------------------------------------
+//---------- FOR SUBTASK CREATE FORM------------------------------------
 const subtaskDesc = document.querySelector("#subtaskDescription");
 const eLevel = document.querySelector("#eLevel");
 const taskSelector = document.querySelector("#taskDropdown");
@@ -64,7 +67,7 @@ const printSubtaskToScreen = (done, stasks, effort, subtaskId, i, taskName, task
 
         let editTaskButton = document.createElement("BUTTON");
         editTaskButton.appendChild(tasktext);
-        editTaskButton.setAttribute("class", "btn btn-primary");
+        editTaskButton.setAttribute("class", "btn btn-secondary");
         editTaskButton.setAttribute("task_id", `${taskid}`);
         editTaskButton.setAttribute("data-bs-toggle", "modal");
         editTaskButton.setAttribute("data-bs-target", "#updateModalTargetTask");
@@ -87,10 +90,18 @@ const printSubtaskToScreen = (done, stasks, effort, subtaskId, i, taskName, task
     let doneColumn = document.createElement("div");
     doneColumn.className = "col-2 wireframe";
     let doneButton = document.createElement("BUTTON");
-    doneButton.innerHTML = `${done}`;
+    // doneButton.innerHTML = `${done}`;
+
+
     doneButton.setAttribute("onclick", `updateSubtaskDone(${subtaskId},${done})`);
-    if (done) { doneButton.setAttribute("class", "btn btn-success"); }
-    if (!done) { doneButton.setAttribute("class", "btn btn-danger"); }
+    if (done) {
+        doneButton.setAttribute("class", "btn btn-success");
+        doneButton.innerHTML = `<img src="./Resources/checkbox.svg" width= "25" height="25" />`;
+    }
+    if (!done) {
+        doneButton.setAttribute("class", "btn btn-danger");
+        doneButton.innerHTML = `<img src="./Resources/square-with-round-corners.svg" width= "25" height="25" />`;
+    }
     doneColumn.appendChild(doneButton);
 
     let taskColumn = document.createElement("div");
@@ -244,10 +255,11 @@ const updateSubtask = (id) => {
             setTimeout(() => {
                 alertPUT.removeAttribute("class");
                 alertPUT.innerHTML = "";
-            }, 2000);
+                location.reload();
+            }, 1000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
-    location.reload();
+
 }
 
 const updateSubtaskDone = (id, isDone) => {
@@ -271,7 +283,8 @@ const updateSubtaskDone = (id, isDone) => {
             setTimeout(() => {
                 alertPUT.removeAttribute("class");
                 alertPUT.innerHTML = "";
-            }, 2000);
+
+            }, 1000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
 
@@ -300,6 +313,36 @@ const deleteSubtask = (id) => {
         .catch(err => console.error(`Stopppppp! ${err}`));
     location.reload();
 }
+
+const createTask = () => {
+
+    let data = {
+        taskName: taskName.value,
+
+    }
+
+    fetch("http://localhost:8080/task/create", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => response.json())
+        .then(info => {
+            console.log(info);
+            alert.setAttribute("class", "alert alert-success");
+            alert.innerHTML = "Subtask has been successfully created!";
+            //    getSubtask(); 
+            setTimeout(() => {
+                alert.removeAttribute("class");
+                alert.innerHTML = "";
+                location.reload();
+            }, 2000);
+        })
+        .catch(err => console.error(`Stopppppp! ${err}`));
+
+}
 const updateTask = (id) => {
     const taskNameValue = taskNamePUT.value;
 
@@ -322,10 +365,11 @@ const updateTask = (id) => {
             setTimeout(() => {
                 taskAlertPUT.removeAttribute("class");
                 taskAlertPUT.innerHTML = "";
-            }, 2000);
+                location.reload();
+            }, 1000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
-    location.reload();
+
 }
 
 

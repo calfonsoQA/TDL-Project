@@ -42,11 +42,32 @@
         <div class="row" id="firstRow">
             <div class="col-md">
                 <div class="alert alert-primary">
+                    <h4>Enter a new Task</h4>
+
+                    <div id="taskCreate">
+                        <input type="text" class="form-control" id="taskName"
+                            placeholder="Task Name:" />
+                       
+                    </div>
+                    <div class="row" id="firstRow">
+                        <div class="col-md">
+                            <button type="button" class="btn btn-success" onclick="createTask()"
+                                data-dismiss="modal">Create</button>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert" id="onsuccess"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="alert alert-primary">
                     <h4>Enter a new Subtask</h4>
 
                     <div id="subtaskCreate">
                         <input type="text" class="form-control" id="subtaskDescription"
-                            placeholder="Task Description:" />
+                            placeholder="Subtask Description:" />
                         <input type="text" class="form-control" id="eLevel" placeholder="Effort Level:" />
                     </div>
                     <select id="taskDropdown">
@@ -64,9 +85,6 @@
 
                 </div>
             </div>
-            <table>
-
-            </table>
 
             <div class="container wireframe" id="subtaskLists">
 
