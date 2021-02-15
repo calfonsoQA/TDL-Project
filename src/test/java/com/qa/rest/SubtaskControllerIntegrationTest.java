@@ -66,11 +66,11 @@ public class SubtaskControllerIntegrationTest {
 	@Test
 	public void readAll() throws Exception {
 		List<SubtaskDTO> resultList = new ArrayList<SubtaskDTO>();
-		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
-		SubtaskDTO expectedResult2 = new SubtaskDTO(2L, "Buy vacuum", 40, true);
-		SubtaskDTO expectedResult3 = new SubtaskDTO(3L, "Clean the kitchen", 40, true);
-		SubtaskDTO expectedResult4 = new SubtaskDTO(4L, "Sign documents", 40, true);
-		SubtaskDTO expectedResult5 = new SubtaskDTO(5L, "Update calendar", 40, true);
+		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 30, true);
+		SubtaskDTO expectedResult2 = new SubtaskDTO(2L, "Buy vacuum", 30, true);
+		SubtaskDTO expectedResult3 = new SubtaskDTO(3L, "Clean the kitchen", 30, true);
+		SubtaskDTO expectedResult4 = new SubtaskDTO(4L, "Sign documents", 30, true);
+		SubtaskDTO expectedResult5 = new SubtaskDTO(5L, "Update calendar", 30, true);
 		resultList.add(expectedResult);
 		resultList.add(expectedResult2);
 		resultList.add(expectedResult3);
@@ -92,7 +92,7 @@ public class SubtaskControllerIntegrationTest {
 	@Test
 	public void readOne() throws Exception {
 
-		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
+		SubtaskDTO expectedResult = new SubtaskDTO(1L, "Buy utensils", 30, true);
 
 //		Setup Request
 		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET,

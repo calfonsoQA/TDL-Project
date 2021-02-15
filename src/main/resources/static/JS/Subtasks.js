@@ -37,9 +37,9 @@ const printTaskToScreen = (taskTitle) => {
     taskrowinside.appendChild(taskrow);
 }
 
-const taskToDropDown = (taskName, id) =>{
+const taskToDropDown = (taskName, id) => {
     let taskOption = document.createElement("option");
-    taskOption.value=id;
+    taskOption.value = id;
     let tasktext = document.createTextNode(`${taskName}`);
     taskOption.appendChild(tasktext);
     taskSelector.appendChild(taskOption);
@@ -77,6 +77,8 @@ const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
     let doneButton = document.createElement("BUTTON");
     doneButton.innerHTML = `${done}`;
     doneButton.setAttribute("onclick", `updateSubtaskDone(${taskId},${done})`);
+    if (done) { doneButton.setAttribute("class", "btn btn-success"); }
+    if (!done) { doneButton.setAttribute("class", "btn btn-danger"); }
     doneColumn.appendChild(doneButton);
 
     let taskColumn = document.createElement("div");
@@ -179,8 +181,8 @@ const createSubtask = () => {
     let data = {
         subtaskDescription: subtaskDescriptionValue,
         effortLevel: effortLevelValue,
-        done:false,
-        myTask:{id:taskSelectorValue}
+        done: false,
+        myTask: { id: taskSelectorValue }
     }
 
     fetch("http://localhost:8080/subtask/create", {
@@ -235,9 +237,9 @@ const updateSubtask = (id) => {
 }
 
 const updateSubtaskDone = (id, isDone) => {
-    
+
     let data = {
-        done:!isDone
+        done: !isDone
     }
 
     fetch("http://localhost:8080/subtask/update/" + id, {

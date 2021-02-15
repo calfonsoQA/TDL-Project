@@ -32,9 +32,6 @@ public class TaskController {
 		this.service = service;
 	}
 
-//	private Long id = 0L;
-//	private List<User> users = new ArrayList<>();
-
 	@GetMapping("/test")
 	public String test() {
 		return "Hello, World! :)";
@@ -64,7 +61,6 @@ public class TaskController {
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<Object> delete(@PathVariable Long id) {
-		// Remove Person and return it
 		return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}

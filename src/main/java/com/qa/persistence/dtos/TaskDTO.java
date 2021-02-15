@@ -13,7 +13,6 @@ public class TaskDTO {
 
 	public TaskDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public TaskDTO(Long id, String taskName, List<SubtaskDTO> subtaskList) {

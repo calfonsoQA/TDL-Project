@@ -70,11 +70,11 @@ public class TaskControllerIntegrationTest {
 		List<SubtaskDTO> subResultList = new ArrayList<SubtaskDTO>();
 		List<SubtaskDTO> subResultList2 = new ArrayList<SubtaskDTO>();
 		List<SubtaskDTO> subResultList3 = new ArrayList<SubtaskDTO>();
-		SubtaskDTO expectedSubResult = new SubtaskDTO(1L, "Buy utensils", 40, true);
-		SubtaskDTO expectedSubResult2 = new SubtaskDTO(2L, "Buy vacuum", 40, true);
-		SubtaskDTO expectedSubResult3 = new SubtaskDTO(3L, "Clean the kitchen", 40, true);
-		SubtaskDTO expectedSubResult4 = new SubtaskDTO(4L, "Sign documents", 40, true);
-		SubtaskDTO expectedSubResult5 = new SubtaskDTO(5L, "Update calendar", 40, true);
+		SubtaskDTO expectedSubResult = new SubtaskDTO(1L, "Buy utensils", 30, true);
+		SubtaskDTO expectedSubResult2 = new SubtaskDTO(2L, "Buy vacuum", 30, true);
+		SubtaskDTO expectedSubResult3 = new SubtaskDTO(3L, "Clean the kitchen", 30, true);
+		SubtaskDTO expectedSubResult4 = new SubtaskDTO(4L, "Sign documents", 30, true);
+		SubtaskDTO expectedSubResult5 = new SubtaskDTO(5L, "Update calendar", 30, true);
 		subResultList.add(expectedSubResult);
 		subResultList2.add(expectedSubResult2);
 		subResultList2.add(expectedSubResult3);

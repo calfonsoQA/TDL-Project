@@ -34,7 +34,6 @@ public class TaskDomain {
 
 	public TaskDomain() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public TaskDomain(String taskName, List<SubtaskDomain> subtaskList) {
