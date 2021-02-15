@@ -1,7 +1,7 @@
-Coverage: 34%
-# Project Title
+Coverage: 72.3%
+# To Do List (TDL) Project
 
-One Paragraph of project description goes here
+The objective of this project is to develop a web based application to interact with a managed SQL database. The application will enable the user to interact with a web page using HTML and JavaScript front end elements that connect to a Java back end API. The application enables the user to Create, Read, Update and Delete entries within the database.
 
 ## Getting Started
 
@@ -9,29 +9,29 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What you need to install the software and how to install them
 
-```
-Give examples
-```
+
+To run this application, you will need:
+* Java installed 
+* Eclipse IDE
+* Maven
+
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+How to get the development environment running:
 
-Say what the step will be
+1. Clone or fork this repository
+2. Import folder as a Maven project within Eclipse
 
+In order to run the Java application within the command line enter the following into the command line and press enter: 
 ```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+$ java -war calfonso-tdl-0.0.1-jar-with-dependencies.war
+ 
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+![](Supporting%20Documents/OrderReadScreenshot.png)
 
 ## Running the tests
 
@@ -39,30 +39,25 @@ Explain how to run the automated tests for this system. Break down into which te
 
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### Integration Tests 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+JUnit is used for testing this application. In order to run these tests, right-click on the project within the Eclipse IDE and select "Coverage As", then select "JUnit Test"
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+1. Open a command line within the project folder i.e. change directory within the command line to "/your-directory/TDL-Project/"
+2. Enter the following:
+```
+$ mvn clean package
+ 
+```
+3. Then change directory into target using
+```
+$ cd target 
+```
+4. Run the application using:
+```
+$ java -jar calfonso-ims-0.0.1-jar-with-dependencies.jar
+ 
+```
 
 ## Built With
 
@@ -74,7 +69,8 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Claes Alfonso** - *Implementation and development of working application*
+* **Jordan Harrison** - *MyBeanUtils.java class* - [jordanharrison](https://github.com/JHarry444/ims-demo)
 
 ## License
 
@@ -84,6 +80,6 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Savannah Vaithilingam** - *HTML, CSS and JavaScript Development Trainer*
+* **Alan Davis** - *Spring Development and Testing Trainer*
+* **Jordan Harrison** - *MyBeanUtils.java class provider*
