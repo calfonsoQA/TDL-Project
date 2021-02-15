@@ -198,11 +198,11 @@ const createSubtask = () => {
             setTimeout(() => {
                 alert.removeAttribute("class");
                 alert.innerHTML = "";
-
+location.reload();
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
-        location.reload();
+        
 }
 
 const updateSubtask = (id) => {

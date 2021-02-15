@@ -25,6 +25,7 @@ public class SubtaskSeleniumTest {
 	 Map<String, Object> prefs = new HashMap<String, Object>();
 	 ChromeOptions cOptions = new ChromeOptions();
 	  
+	 
 	 // Settings
 	 prefs.put("profile.default_content_setting_values.cookies", 2);
 	 prefs.put("network.cookie.cookieBehavior", 2);
@@ -50,15 +51,13 @@ public class SubtaskSeleniumTest {
 	
 
 	@Test
-	public void subtasksDisplay() throws InterruptedException {
+	public void subtaskRead() throws InterruptedException {
 		
 //		GIVEN:
 		driver.get(URL);
 		
 //		WHEN: I first enter and see the web page
 		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[3]/div/div[3]"));
-		
-//		AND: I select images
 		
 		
 //		THEN: I should see the first task and subtask result
@@ -69,5 +68,31 @@ public class SubtaskSeleniumTest {
 //		Assertions
 		assertEquals("Buy utensils", result);
 //		Thread.sleep(10000);
+	}
+	
+	@Test
+	public void subtaskCreate() throws InterruptedException {
+		
+//		GIVEN:
+		driver.get(URL);
+		
+//		WHEN: I first enter and see the web page
+		targ = driver.findElement(By.id("subtaskDescription"));
+		targ.sendKeys("New task");
+		targ = driver.findElement(By.id("eLevel"));
+		targ.sendKeys("2");
+		driver.findElement(By.xpath("//select/option[@value='1']")).click();
+		driver.findElement(By.xpath("//*[@id=\"firstRow\"]/div[1]/button")).click();
+		
+//		THEN: I should see the first task and subtask result
+		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[4]/div/div[3]"));
+		String result = targ.getText();
+		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[4]/div/div[4]"));
+		String result2 = targ.getText();
+		
+//		Assertions
+		assertEquals("New task", result);
+		assertEquals("2", result2);
+
 	}
 }
