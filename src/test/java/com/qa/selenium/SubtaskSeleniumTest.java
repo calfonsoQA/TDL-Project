@@ -18,7 +18,7 @@ public class SubtaskSeleniumTest {
 
 	private static RemoteWebDriver driver;
 	private static WebElement targ;
-	private final String URL = "file:///C:/Users/admin/Documents/workspace-spring-tool-suite-4-4.9.0.RELEASE/TDL-Project/src/main/resources/static/index.html";
+	private final String URL = "http://localhost:8080/index.html";
 	
 	// Designed to return ChromeOptions to configure new ChromeDrivers in Selenium
 	public static ChromeOptions chromeCfg() {
@@ -55,21 +55,19 @@ public class SubtaskSeleniumTest {
 //		GIVEN:
 		driver.get(URL);
 		
-//		WHEN: I search Kittens using the search bar
-		targ = driver.findElement(By.name("q"));
-		targ.sendKeys("Kittens");
-		targ.submit();
+//		WHEN: I first enter and see the web page
+		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[3]/div/div[3]"));
 		
 //		AND: I select images
 		
 		
-//		THEN: I should get results of kitten images
-		String result = driver.getTitle();
+//		THEN: I should see the first task and subtask result
+		String result = targ.getText();
 		
 //		And: I can select the 5th
 		
 //		Assertions
-		assertEquals("Kittens - Google Search", result);
+		assertEquals("Buy utensils", result);
 //		Thread.sleep(10000);
 	}
 }

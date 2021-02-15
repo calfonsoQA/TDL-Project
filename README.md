@@ -1,4 +1,4 @@
-Coverage: 72.3%
+Coverage: 95%
 # To Do List (TDL) Project
 
 The objective of this project is to develop a web based application to interact with a managed SQL database. The application will enable the user to interact with a web page using HTML and JavaScript front end elements that connect to a Java back end API. The application enables the user to Create, Read, Update and Delete entries within the database.
@@ -55,7 +55,7 @@ $ cd target
 ```
 4. Run the application using:
 ```
-$ java -jar calfonso-ims-0.0.1-jar-with-dependencies.jar
+$ java -jar tdl-project-0.0.1-SNAPSHOT.war
  
 ```
 
