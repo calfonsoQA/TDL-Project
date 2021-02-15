@@ -29,11 +29,27 @@ const updateSubtaskModal = (id) => {
 
 }
 
-const printTaskToScreen = (done, stasks, effort, taskId) => {
+const printTaskToScreen = (taskTitle) => {
     let taskrow = document.createElement("div");
-    taskrow.className = "row justify-content-around row-wireframe";
+    let tasktext = document.createTextNode(`${taskTitle}`);
+    taskrow.appendChild(tasktext);
+    taskrowinside.appendChild(taskrow);
+}
+
+const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
+    let subtaskrow = document.createElement("div");
+    subtaskrow.className = "row justify-content-around row-wireframe";
     let taskrowinside = document.createElement("div");
     taskrowinside.className = "alert alert-primary";
+
+    if (i == 0){
+    let taskrow = document.createElement("div");
+    let taskHead = document.createElement("h5");
+    let tasktext = document.createTextNode(`${taskName}`);
+    taskHead.appendChild(tasktext);
+    taskrow.appendChild(taskHead);
+    taskListOutput.appendChild(taskrow);
+    }
 
     let editColumn = document.createElement("div");
     editColumn.className = "col-2 wireframe";
@@ -53,7 +69,7 @@ const printTaskToScreen = (done, stasks, effort, taskId) => {
     doneColumn.appendChild(text);
 
     let taskColumn = document.createElement("div");
-    taskColumn.className = "col-4 wireframe";
+    taskColumn.className = "col-2 wireframe";
     let text2 = document.createTextNode(`${stasks}`);
     taskColumn.appendChild(text2);
 
@@ -74,12 +90,12 @@ const printTaskToScreen = (done, stasks, effort, taskId) => {
     del.setAttribute("onclick", `deleteSubtask(${taskId})`);
     deleteColumn.appendChild(del);
 
-    taskrow.appendChild(editColumn);
-    taskrow.appendChild(doneColumn);
-    taskrow.appendChild(taskColumn);
-    taskrow.appendChild(effortColumn);
-    taskrow.appendChild(deleteColumn);
-    taskrowinside.appendChild(taskrow);
+    subtaskrow.appendChild(editColumn);
+    subtaskrow.appendChild(doneColumn);
+    subtaskrow.appendChild(taskColumn);
+    subtaskrow.appendChild(effortColumn);
+    subtaskrow.appendChild(deleteColumn);
+    taskrowinside.appendChild(subtaskrow);
 
     taskListOutput.appendChild(taskrowinside);
 
@@ -98,7 +114,7 @@ function generateTableHead(table, data) {
 }
 
 // const getSubtask = () => {
-//     fetch("http://localhost:8080/subtask/readAll")
+//     fetch("http://localhost:8080/task/readAll")
 //         .then((response) => {
 //             // check that the response is OK (i.e. 200)
 //             if (response.status !== 200) {
@@ -111,11 +127,13 @@ function generateTableHead(table, data) {
 //                     console.log(infofromserver);
 //                     console.log(infofromserver); // key - return array(6)
 //                     // generateTableHead(display,Object.keys(infofromserver[0]));
-//                     for (let tasks of infofromserver) {               
-//                             console.log(tasks.subtaskDescription);
-//                             printTaskToScreen(tasks.done, tasks.subtaskDescription, tasks.effortLevel, tasks.id);
+//                     for (let tasks of infofromserver) {
+//                         for (let subtasks of tasks.subtaskList) {
+//                             console.log(subtasks.subtaskDescription);
+//                             printSubtaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id);
 //                             // printNameToScreen(tasks.effortLevel);
-//                             // printTaskToScreen(tasks.done,tasks.subtaskDescription);                     
+//                             // printSubtaskToScreen(tasks.done,tasks.subtaskDescription);
+//                         }
 //                     }
 //                 })
 //             }
@@ -127,23 +145,22 @@ function generateTableHead(table, data) {
 const getSubtask = () => {
     fetch("http://localhost:8080/task/readAll")
         .then((response) => {
-            // check that the response is OK (i.e. 200)
+
             if (response.status !== 200) {
                 throw new Error("I don't have a status of 200");
             } else {
                 console.log(response);
                 console.log(`response is OK (200)`);
-                //json-ify it (which returns a promise)
                 response.json().then((infofromserver) => {
                     console.log(infofromserver);
-                    console.log(infofromserver); // key - return array(6)
-                    // generateTableHead(display,Object.keys(infofromserver[0]));
+                    console.log(infofromserver); 
                     for (let tasks of infofromserver) {
+                        let i = 0;
                         for (let subtasks of tasks.subtaskList) {
+                            console.log(i);
                             console.log(subtasks.subtaskDescription);
-                            printTaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id);
-                            // printNameToScreen(tasks.effortLevel);
-                            // printTaskToScreen(tasks.done,tasks.subtaskDescription);
+                            printSubtaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id, i ,tasks.taskName);
+                            i++;
                         }
                     }
                 })
