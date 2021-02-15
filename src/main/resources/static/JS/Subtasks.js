@@ -91,8 +91,6 @@ const printSubtaskToScreen = (done, stasks, effort, subtaskId, i, taskName, task
     doneColumn.className = "col-2 wireframe";
     let doneButton = document.createElement("BUTTON");
     // doneButton.innerHTML = `${done}`;
-
-
     doneButton.setAttribute("onclick", `updateSubtaskDone(${subtaskId},${done})`);
     if (done) {
         doneButton.setAttribute("class", "btn btn-success");
