@@ -107,7 +107,7 @@
 
                                         <div id="subtaskUpdate">
                                             <input type="text" class="form-control" id="subtaskDescriptionPUT"
-                                                placeholder="Updated Task Description:" />
+                                                placeholder="Updated Subtask Description:" />
                                             <input type="text" class="form-control" id="eLevelPUT"
                                                 placeholder="Updated Effort Level:" />
                                         </div>
@@ -121,6 +121,36 @@
                         </div>
                         <div class="modal-footer">
                             <div class="alert" id="onsuccessPUT"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="updateModalTargetTask">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Update Task</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" id="firstRow">
+                                <div class="col-md">
+                                    <div class="alert alert-primary">
+                                        <div id="taskUpdate">
+                                            <input type="text" class="form-control" id="taskNamePUT"
+                                                placeholder="Updated Task Name:" />       
+                                        </div>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                                            id="updateTaskButtonModal">Update</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="alert" id="TaskOnSuccessPUT"></div>
                         </div>
                     </div>
                 </div>

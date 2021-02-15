@@ -15,16 +15,23 @@ const eLevel = document.querySelector("#eLevel");
 const taskSelector = document.querySelector("#taskDropdown");
 const alert = document.querySelector("#onsuccess");
 //--------------------------------------------------------------
-//---------- FOR UPDATE FORM------------------------------------
+//---------- FOR SUBTASK UPDATE FORM------------------------------------
 const updateButtonModal = document.querySelector("#updateButtonModal");
 const subtaskDescPUT = document.querySelector("#subtaskDescriptionPUT");
 const eLevelPUT = document.querySelector("#eLevelPUT");
 const alertPUT = document.querySelector("#onsuccessPUT");
 //--------------------------------------------------------------
+//---------- FOR TASK UPDATE FORM------------------------------------
+const updateTaskButtonModal = document.querySelector("#updateTaskButtonModal");
+const taskNamePUT = document.querySelector("#taskNamePUT");
+const taskAlertPUT = document.querySelector("#TaskOnSuccessPUT");
+//--------------------------------------------------------------
 
 const updateSubtaskModal = (id) => {
     updateButtonModal.setAttribute("onclick", `updateSubtask(${id})`);
-
+}
+const updateTaskModal = (id) => {
+    updateTaskButtonModal.setAttribute("onclick", `updateTask(${id})`);
 }
 
 const printTaskToScreen = (taskTitle) => {
@@ -42,7 +49,7 @@ const taskToDropDown = (taskName, id) => {
     taskSelector.appendChild(taskOption);
 }
 
-const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
+const printSubtaskToScreen = (done, stasks, effort, subtaskId, i, taskName, taskid) => {
     let subtaskrow = document.createElement("div");
     subtaskrow.className = "row justify-content-around row-wireframe";
     let taskrowinside = document.createElement("div");
@@ -54,7 +61,16 @@ const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
         let tasktext = document.createTextNode(`${taskName}`);
         taskHead.appendChild(tasktext);
         taskrow.appendChild(taskHead);
-        taskListOutput.appendChild(taskrow);
+
+        let editTaskButton = document.createElement("BUTTON");
+        editTaskButton.appendChild(tasktext);
+        editTaskButton.setAttribute("class", "btn btn-primary");
+        editTaskButton.setAttribute("task_id", `${taskid}`);
+        editTaskButton.setAttribute("data-bs-toggle", "modal");
+        editTaskButton.setAttribute("data-bs-target", "#updateModalTargetTask");
+        editTaskButton.setAttribute("onclick", `updateTaskModal(${taskid})`);
+
+        taskListOutput.appendChild(editTaskButton);
     }
 
     let editColumn = document.createElement("div");
@@ -62,18 +78,17 @@ const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
     let edit = document.createElement("BUTTON");
     edit.innerHTML = "edit";
     edit.setAttribute("class", "btn btn-primary");
-    edit.setAttribute("task_id", `${taskId}`);
+    edit.setAttribute("task_id", `${subtaskId}`);
     edit.setAttribute("data-bs-toggle", "modal");
     edit.setAttribute("data-bs-target", "#updateModalTarget");
-    // let id = edit.getAttribute("task_id");
-    edit.setAttribute("onclick", `updateSubtaskModal(${taskId})`);
+    edit.setAttribute("onclick", `updateSubtaskModal(${subtaskId})`);
     editColumn.appendChild(edit);
 
     let doneColumn = document.createElement("div");
     doneColumn.className = "col-2 wireframe";
     let doneButton = document.createElement("BUTTON");
     doneButton.innerHTML = `${done}`;
-    doneButton.setAttribute("onclick", `updateSubtaskDone(${taskId},${done})`);
+    doneButton.setAttribute("onclick", `updateSubtaskDone(${subtaskId},${done})`);
     if (done) { doneButton.setAttribute("class", "btn btn-success"); }
     if (!done) { doneButton.setAttribute("class", "btn btn-danger"); }
     doneColumn.appendChild(doneButton);
@@ -93,8 +108,8 @@ const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
     let del = document.createElement("BUTTON");
     del.innerHTML = "x";
     del.setAttribute("class", "btn btn-danger");
-    del.setAttribute("task_id", `${taskId}`);
-    del.setAttribute("onclick", `deleteSubtask(${taskId})`);
+    del.setAttribute("task_id", `${subtaskId}`);
+    del.setAttribute("onclick", `deleteSubtask(${subtaskId})`);
     deleteColumn.appendChild(del);
 
     subtaskrow.appendChild(editColumn);
@@ -137,7 +152,7 @@ const getSubtask = () => {
                         for (let subtasks of tasks.subtaskList) {
                             console.log(i);
                             console.log(subtasks.subtaskDescription);
-                            printSubtaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id, i, tasks.taskName);
+                            printSubtaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id, i, tasks.taskName, tasks.id);
                             i++;
                         }
                     }
@@ -198,11 +213,11 @@ const createSubtask = () => {
             setTimeout(() => {
                 alert.removeAttribute("class");
                 alert.innerHTML = "";
-location.reload();
+                location.reload();
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
-        
+
 }
 
 const updateSubtask = (id) => {
@@ -232,7 +247,7 @@ const updateSubtask = (id) => {
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
-        location.reload();
+    location.reload();
 }
 
 const updateSubtaskDone = (id, isDone) => {
@@ -260,7 +275,7 @@ const updateSubtaskDone = (id, isDone) => {
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
 
-        location.reload();
+    location.reload();
 }
 
 const deleteSubtask = (id) => {
@@ -283,7 +298,34 @@ const deleteSubtask = (id) => {
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
-        location.reload();
+    location.reload();
+}
+const updateTask = (id) => {
+    const taskNameValue = taskNamePUT.value;
+
+    let data = {
+        taskName: taskNameValue
+    }
+
+    fetch("http://localhost:8080/task/update/" + id, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => response.json())
+        .then(info => {
+            console.log(info);
+            taskAlertPUT.setAttribute("class", "alert alert-success");
+            taskAlertPUT.innerHTML = "Task has been successfully updated!";
+            setTimeout(() => {
+                taskAlertPUT.removeAttribute("class");
+                taskAlertPUT.innerHTML = "";
+            }, 2000);
+        })
+        .catch(err => console.error(`Stopppppp! ${err}`));
+    location.reload();
 }
 
 
