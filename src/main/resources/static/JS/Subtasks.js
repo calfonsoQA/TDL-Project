@@ -74,8 +74,12 @@ const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
 
     let doneColumn = document.createElement("div");
     doneColumn.className = "col-2 wireframe";
+    let doneButton = document.createElement("BUTTON");
+    doneButton.innerHTML = `${done}`;
     let text = document.createTextNode(`${done}`);
-    doneColumn.appendChild(text);
+    // updateSubtaskDone = (id, isDone)
+    doneButton.setAttribute("onclick", `updateSubtaskDone(${taskId},${done})`);
+    doneColumn.appendChild(doneButton);
 
     let taskColumn = document.createElement("div");
     taskColumn.className = "col-2 wireframe";
@@ -93,9 +97,6 @@ const printSubtaskToScreen = (done, stasks, effort, taskId, i, taskName) => {
     del.innerHTML = "x";
     del.setAttribute("class", "btn btn-danger");
     del.setAttribute("task_id", `${taskId}`);
-    // let id = del.getAttribute("task_id");
-    // del.onclick = deleteSubtask(id);
-    // del.addEventListener("click", deleteSubtask(id));
     del.setAttribute("onclick", `deleteSubtask(${taskId})`);
     deleteColumn.appendChild(del);
 
@@ -122,34 +123,6 @@ function generateTableHead(table, data) {
     }
 }
 
-// const getSubtask = () => {
-//     fetch("http://localhost:8080/task/readAll")
-//         .then((response) => {
-//             // check that the response is OK (i.e. 200)
-//             if (response.status !== 200) {
-//                 throw new Error("I don't have a status of 200");
-//             } else {
-//                 console.log(response);
-//                 console.log(`response is OK (200)`);
-//                 //json-ify it (which returns a promise)
-//                 response.json().then((infofromserver) => {
-//                     console.log(infofromserver);
-//                     console.log(infofromserver); // key - return array(6)
-//                     // generateTableHead(display,Object.keys(infofromserver[0]));
-//                     for (let tasks of infofromserver) {
-//                         for (let subtasks of tasks.subtaskList) {
-//                             console.log(subtasks.subtaskDescription);
-//                             printSubtaskToScreen(subtasks.done, subtasks.subtaskDescription, subtasks.effortLevel, subtasks.id);
-//                             // printNameToScreen(tasks.effortLevel);
-//                             // printSubtaskToScreen(tasks.done,tasks.subtaskDescription);
-//                         }
-//                     }
-//                 })
-//             }
-//         }).catch((err) => {
-//             console.error(err);
-//         })
-// }
 
 const getSubtask = () => {
     fetch("http://localhost:8080/task/readAll")
@@ -233,36 +206,6 @@ const createSubtask = () => {
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
 }
-// const createSubtask = () => {
-//     const subtaskDescriptionValue = subtaskDesc.value;
-//     const effortLevelValue = eLevel.value;
-
-//     let data = {
-//         subtaskDescription: subtaskDescriptionValue,
-//         effortLevel: effortLevelValue
-//     }
-
-//     fetch("http://localhost:8080/subtask/create", {
-//         method: "POST",
-//         body: JSON.stringify(data),
-//         headers: {
-//             "Content-Type": "application/json"
-//         }
-//     })
-//         .then(response => response.json())
-//         .then(info => {
-//             console.log(info);
-//             alert.setAttribute("class", "alert alert-success");
-//             alert.innerHTML = "Subtask has been successfully created!";
-//             //    getSubtask(); 
-//             setTimeout(() => {
-//                 alert.removeAttribute("class");
-//                 alert.innerHTML = "";
-
-//             }, 2000);
-//         })
-//         .catch(err => console.error(`Stopppppp! ${err}`));
-// }
 
 const updateSubtask = (id) => {
     const subtaskDescriptionValue = subtaskDescPUT.value;
@@ -285,6 +228,32 @@ const updateSubtask = (id) => {
             console.log(info);
             alertPUT.setAttribute("class", "alert alert-success");
             alertPUT.innerHTML = "Subtask has been successfully updated!";
+            setTimeout(() => {
+                alertPUT.removeAttribute("class");
+                alertPUT.innerHTML = "";
+            }, 2000);
+        })
+        .catch(err => console.error(`Stopppppp! ${err}`));
+}
+
+const updateSubtaskDone = (id, isDone) => {
+    
+    let data = {
+        done:!isDone
+    }
+
+    fetch("http://localhost:8080/subtask/update/" + id, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => response.json())
+        .then(info => {
+            console.log(info);
+            alertPUT.setAttribute("class", "alert alert-success");
+            alertPUT.innerHTML = "Done status has been successfully updated!";
             setTimeout(() => {
                 alertPUT.removeAttribute("class");
                 alertPUT.innerHTML = "";
