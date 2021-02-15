@@ -49,13 +49,13 @@
                             placeholder="Task Description:" />
                         <input type="text" class="form-control" id="eLevel" placeholder="Effort Level:" />
                     </div>
+                    <select id="taskDropdown">
+                        <option value=" "> Choose Task List</option>
+                    </select>
                     <div class="row" id="firstRow">
                         <div class="col-md">
                             <button type="button" class="btn btn-success" onclick="createSubtask()"
                                 data-dismiss="modal">Create</button>
-                            
-                                
-                            
                         </div>
                         <div class="col-md">
                             <div class="alert" id="onsuccess"></div>
