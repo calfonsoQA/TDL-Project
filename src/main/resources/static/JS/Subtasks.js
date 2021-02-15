@@ -5,10 +5,7 @@ const checkDone = document.querySelector("#checkerDone");
 const subtasks = document.querySelector("#subtasks");
 const effortOutput = document.querySelector("#eLevelDisplay");
 const deleteButton = document.querySelector("#deleteButton");
-let display = document.querySelector("table");
-// const check = 
 const taskListOutput = document.querySelector("#subtaskLists");
-
 const testDeleteButton = document.querySelector("#testDelete");
 //--------------------------------------------------------------
 
@@ -205,6 +202,7 @@ const createSubtask = () => {
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
+        location.reload();
 }
 
 const updateSubtask = (id) => {
@@ -234,6 +232,7 @@ const updateSubtask = (id) => {
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
+        location.reload();
 }
 
 const updateSubtaskDone = (id, isDone) => {
@@ -260,6 +259,8 @@ const updateSubtaskDone = (id, isDone) => {
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
+
+        location.reload();
 }
 
 const deleteSubtask = (id) => {
@@ -282,6 +283,7 @@ const deleteSubtask = (id) => {
             }, 2000);
         })
         .catch(err => console.error(`Stopppppp! ${err}`));
+        location.reload();
 }
 
 
