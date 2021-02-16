@@ -54,7 +54,7 @@ public class SubtaskSeleniumTest {
 		driver.get(URL);
 
 //		WHEN: I first enter and see the web page
-		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[3]/div/div[3]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[2]/div/div[3]"));
 
 //		THEN: I should see the first task and subtask result
 		String result = targ.getText();
