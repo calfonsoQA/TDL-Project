@@ -27,7 +27,7 @@ How to get the development environment running:
 
 In order to run the Java application within the command line enter the following into the command line and press enter: 
 ```
-$ java -war calfonso-tdl-0.0.1-jar-with-dependencies.war
+$ java -war tdl-project-0.0.1-SNAPSHOT.war
  
 ```
 
@@ -56,6 +56,11 @@ $ cd target
 4. Run the application using:
 ```
 $ java -jar tdl-project-0.0.1-SNAPSHOT.war
+ 
+```
+5. Enter the following into your web browser to access the web page:
+```
+http://localhost:8080/index.html
  
 ```
 
