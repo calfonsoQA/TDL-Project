@@ -11,12 +11,13 @@ const testDeleteButton = document.querySelector("#testDelete");
 
 //---------- FOR TASK CREATE FORM------------------------------------
 const taskName = document.querySelector("#taskName");
+const alertTask = document.querySelector("#onsuccessTask");
 //--------------------------------------------------------------
 //---------- FOR SUBTASK CREATE FORM------------------------------------
 const subtaskDesc = document.querySelector("#subtaskDescription");
 const eLevel = document.querySelector("#eLevel");
 const taskSelector = document.querySelector("#taskDropdown");
-const alert = document.querySelector("#onsuccess");
+const alertSubtask = document.querySelector("#onsuccessSubtask");
 //--------------------------------------------------------------
 //---------- FOR SUBTASK UPDATE FORM------------------------------------
 const updateButtonModal = document.querySelector("#updateButtonModal");
@@ -216,12 +217,12 @@ const createSubtask = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
-            alert.setAttribute("class", "alert alert-success");
-            alert.innerHTML = "Subtask has been successfully created!";
+            alertSubtask.setAttribute("class", "alert alert-success");
+            alertSubtask.innerHTML = "Subtask has been successfully created!";
             //    getSubtask(); 
             setTimeout(() => {
-                alert.removeAttribute("class");
-                alert.innerHTML = "";
+                alertSubtask.removeAttribute("class");
+                alertSubtask.innerHTML = "";
                 location.reload();
             }, 2000);
         })
@@ -329,12 +330,12 @@ const createTask = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
-            alert.setAttribute("class", "alert alert-success");
-            alert.innerHTML = "Subtask has been successfully created!";
+            alertTask.setAttribute("class", "alert alert-success");
+            alertTask.innerHTML = "Task has been successfully created!";
             //    getSubtask(); 
             setTimeout(() => {
-                alert.removeAttribute("class");
-                alert.innerHTML = "";
+                alertTask.removeAttribute("class");
+                alertTask.innerHTML = "";
                 location.reload();
             }, 2000);
         })

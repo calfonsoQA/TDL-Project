@@ -78,9 +78,9 @@ public class SubtaskSeleniumTest {
 		driver.findElement(By.xpath("//*[@id=\"firstRow\"]/div[1]/button")).click();
 
 //		THEN: I should see the first task and subtask result
-		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[4]/div/div[3]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[3]/div/div[3]"));
 		String result = targ.getText();
-		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[4]/div/div[4]"));
+		targ = driver.findElement(By.xpath("//*[@id=\"subtaskLists\"]/div[3]/div/div[4]"));
 		String result2 = targ.getText();
 
 //		Assertions
