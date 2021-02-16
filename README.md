@@ -31,11 +31,8 @@ $ java -war tdl-project-0.0.1-SNAPSHOT.war
  
 ```
 
-![](Supporting%20Documents/OrderReadScreenshot.png)
 
 ## Running the tests
-
-Explain how to run the automated tests for this system. Break down into which tests and what they do
 
 ### Unit Tests 
 
