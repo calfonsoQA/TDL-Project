@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href=""> -->
+
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-light bg-light">
+            <a href="link/to/page" class="navbar-brand">To Do List</a>
+            <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#hasToMatch">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="hasToMatch">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="link/to/login" class="nav-link">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="link/to/home" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="link/to/memes" class="nav-link">About</a>
+                        </li>
+                    </ul>
+                </div> -->
+        </nav>
+        <div class="row" id="firstRow">
+            <div class="col-md">
+                <div class="alert alert-primary">
+                    <h4>Enter a new Task</h4>
+
+                    <div id="taskCreate">
+                        <input type="text" class="form-control" id="taskName"
+                            placeholder="Task Name:" />
+                       
+                    </div>
+                    <div class="row" id="firstRow">
+                        <div class="col-md">
+                            <button type="button" class="btn btn-success" onclick="createTask()"
+                                data-dismiss="modal">Create</button>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert" id="onsuccess"></div>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="alert alert-primary">
+                    <h4>Enter a new Subtask</h4>
+
+                    <div id="subtaskCreate">
+                        <input type="text" class="form-control" id="subtaskDescription"
+                            placeholder="Subtask Description:" />
+                        <input type="text" class="form-control" id="eLevel" placeholder="Effort Level:" />
+                    </div>
+                    <select id="taskDropdown" class = "btn btn-secondary">
+                        <option value=" "> Choose Task List</option>
+                    </select>
+                    <div class="row" id="firstRow">
+                        <div class="col-md">
+                            <button type="button" class="btn btn-success" onclick="createSubtask()"
+                                data-dismiss="modal">Create</button>
+                        </div>
+                        <div class="col-md">
+                            <div class="alert" id="onsuccess"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container wireframe" id="subtaskLists">
+
+                <div class="row justify-content-around row-wireframe">
+                    <div class="col-2 wireframe">
+
+                    </div>
+                    <div class="col-2 wireframe">
+                        <h5>Done</h5>
+                    </div>
+                    <div class="col-2 wireframe">
+                        <h5>Description</h5>
+                    </div>
+                    <div class="col-2 wireframe">
+                        <h5>Effort</h5>
+                    </div>
+                    <div class="col-2 wireframe">
+                        <h5>Delete</h5>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="modal" id="updateModalTarget">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Update Subtask</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" id="firstRow">
+                                <div class="col-md">
+                                    <div class="alert alert-primary">
+
+                                        <div id="subtaskUpdate">
+                                            <input type="text" class="form-control" id="subtaskDescriptionPUT"
+                                                placeholder="Updated Subtask Description:" />
+                                            <input type="text" class="form-control" id="eLevelPUT"
+                                                placeholder="Updated Effort Level:" />
+                                        </div>
+
+                                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                                            id="updateButtonModal">Update</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="alert" id="onsuccessPUT"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="updateModalTargetTask">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title">Update Task</h2>
+                            <button type="button" class="close" data-bs-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" id="firstRow">
+                                <div class="col-md">
+                                    <div class="alert alert-primary">
+                                        <div id="taskUpdate">
+                                            <input type="text" class="form-control" id="taskNamePUT"
+                                                placeholder="Updated Task Name:" />       
+                                        </div>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                                            id="updateTaskButtonModal">Update</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="alert" id="TaskOnSuccessPUT"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <script src="" async defer></script> -->
+        <script src="./JS/Subtasks.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>
