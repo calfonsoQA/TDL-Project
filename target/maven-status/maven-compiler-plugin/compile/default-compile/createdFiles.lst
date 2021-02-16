@@ -1,0 +1,13 @@
+com\qa\utils\MyBeanUtils.class
+com\qa\services\SubtaskService.class
+com\qa\persistence\dtos\SubtaskDTO.class
+com\qa\rest\TaskController.class
+com\qa\rest\SubtaskController.class
+com\qa\persistence\domain\TaskDomain.class
+com\qa\services\TaskService.class
+com\qa\config\AppConfig.class
+com\qa\persistence\repos\TaskRepo.class
+com\qa\persistence\domain\SubtaskDomain.class
+com\qa\TDLApplication.class
+com\qa\persistence\dtos\TaskDTO.class
+com\qa\persistence\repos\SubtaskRepo.class
